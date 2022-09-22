@@ -20,6 +20,9 @@ export class Dashboard1Component implements OnInit {
 
   subscription: Subscription;
 
+  scope1;
+  scope2;
+
     
  
 
@@ -194,6 +197,32 @@ schertzPieData={
       this.stackedData=this.florenceBarData;
       this.data=this.florencePieData;
     }
+
+
+    this.scope1 = {
+        labels: ['Stationary Combustion', 'Mobile Combustion', 'Fugitive Emissions', 'Process Emissions'],
+        datasets: [
+            {
+                type: 'bar',
+                label: ['Scope1 Report',],
+                backgroundColor: ['#141615', '#1d352b', '#4C8554', '#A0B588'],
+                data: [85, 52, 78, 100, + "CO2"]
+            },
+
+        ]
+    };
+    this.scope2 = {
+        labels: ['Electricity','Steam','Heat','Cooling'],
+        datasets: [
+            {
+                type: 'bar',
+                label: ['Report',],
+                backgroundColor: ['#315e3f', '#dad8cd', '#2e3432', '#21332a'],
+                data: [85, 52, 78, 100, + "CO2"]
+            },
+
+        ]
+    };
 
   }
      updateChartOptions() {
