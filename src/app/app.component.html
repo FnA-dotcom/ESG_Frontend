@@ -1,0 +1,11 @@
+<router-outlet></router-outlet>
+<!-- <ng-container >Loading route config...</ng-container> -->
+
+
+
+<!-- <div  >
+    <p-progressSpinner></p-progressSpinner>
+   
+</div> -->
+
+<p-progressSpinner  *ngIf="loadingRouteConfig" [style]="{width: '50px', height: '50px',top:'50%',left:'50%',display:'block',position:'fixed'}" styleClass="custom-spinner" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>

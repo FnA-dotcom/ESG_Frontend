@@ -1,0 +1,97 @@
+.my_scroll_div_sidebar{
+    overflow:scroll;
+    max-height:calc(100% - 3.5rem);
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.innerScroll_sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+// .innerScroll_sidebar::-webkit-scrollbar-track {
+//   background-color: #e4e4e4;
+//   border-radius: 5px;
+// }
+
+.innerScroll_sidebar::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 100px;
+}
+
+.badgeClass{
+  background-color: green;
+  color: red;
+}
+
+
+.ui-menuitem-text .badge{
+  position: absolute;
+  right: 1.5em;
+  top: 1.4em;
+  top: calc(0.714em + 7px);
+}
+
+:host {
+  ::ng-deep .ui-panelmenu
+  {
+      width: 250px;
+      border: 0px;
+  }
+  ::ng-deep .p-panelmenu .p-panelmenu-header > a {
+    padding: 0.5rem;
+    border-bottom: 1px solid #8a8b8d;
+    color: rgb(255, 255, 255);
+    background-color: #21332a !important;
+    font-weight: 700;
+    transition: box-shadow 0.2s;
+    border-radius: 0;
+  }
+
+  ::ng-deep .p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
+    background: #f6f9fc;
+    border-color: #dfe7ef;
+    color: rgb(255, 255, 255);
+  }
+
+  ::ng-deep .p-panelmenu .p-panelmenu-header:not(.p-disabled) > a:hover {
+    background: #f6f9fc;
+    border-color: #dfe7ef;
+    color: rgb(255, 255, 255);
+  }
+
+  ::ng-deep .p-panelmenu .p-panelmenu-content {
+    padding: 0.25rem 0;
+    border: 1px solid #8a8b8d;
+    background: #21332a;
+    color: #dfe7ef !important;
+    margin-bottom: 4px;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  ::ng-deep .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text {
+    color: #dfe7ef;
+  }
+
+  ::ng-deep .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-icon {
+    color: #dfe7ef;
+    margin-right: 0.5rem;
+  }
+
+  ::ng-deep .p-panelmenu .p-panelmenu-header > a .p-panelmenu-icon {
+    margin-right: 0.5rem;
+  }
+
+  ::ng-deep .p-panelmenu .p-panelmenu-header > a .p-menuitem-icon {
+    margin-right: 0.5rem;
+    
+  }
+} 
+
+
+

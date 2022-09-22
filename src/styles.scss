@@ -1,0 +1,126 @@
+/* You can add global styles to this file, and also import other style files */
+$gutter: 1rem; //for primeflex grid system
+
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/prismjs/themes/prism-coy.css";
+@import "../node_modules/@fullcalendar/daygrid/main.min.css";
+@import "../node_modules/@fullcalendar/timegrid/main.min.css";
+@import "assets/demo/flags/flags.css";
+
+// .layout-sidebar {
+//     width: 18rem !important;
+//     height: calc(100% - 5rem) !important;
+//     top: 5rem !important;
+//     overflow-y: scroll
+   
+// }
+
+// .layout-sidebar .layout-menu-container .layout-menu .layout-root-menuitem > .layout-menuitem-root-text {
+//     padding: 0px !important;
+// }
+
+// .layout-sidebar .layout-menu-container{
+//     // overflow: hidden !important;
+// }
+
+// .layout-topbar {
+//     height: 5rem !important;
+// }
+
+// .layout-topbar .layout-topbar-right .layout-topbar-actions > li > ul {
+//     top: 5rem !important;
+// }
+
+// .layout-wrapper .layout-content-wrapper {
+//     width: calc(100% - 18rem) !important;
+//     height: calc(100% - 5rem) !important;
+//     margin-top: 5rem;
+// }
+
+// .layout-footer {
+//     padding: 1rem 2rem;
+// }
+
+// .sidebar-full-screen{
+//     height: 100vh !important;
+// }
+
+// .layout-topbar, .layout-sidebar, .layout-footer {
+//     background: #40badf!important;
+// }
+
+// .layout-sidebar .layout-menu li a:hover {
+//     background: #3e89ae !important;
+// }
+// .layout-sidebar .layout-menu .layout-root-menuitem > ul > li.active-menuitem {
+//     /* background: #3e89ae; */
+//      background: #3e89ae !important;
+// }
+
+// .layout-sidebar .layout-menu .layout-root-menuitem > ul > li .active-menuitem-routerlink {
+//     background: #397a9b !important;
+//     color: #ffffff !important;
+// }
+
+// .layout-topbar .layout-topbar-left .menu-button:hover{
+//     background: #000305 !important;
+// }
+
+// .layout-sidebar .layout-menu li a,
+// .layout-footer .footer-left, .layout-footer .footer-right,
+// .layout-topbar .layout-topbar-left .app-name span,
+// .layout-topbar .layout-topbar-right .layout-topbar-actions li.profile-item .profile-container .name-container span.name,
+// .layout-topbar .layout-topbar-right .layout-topbar-actions li.profile-item .profile-container .name-container span.job,
+// .layout-topbar .layout-topbar-right .layout-topbar-actions li.profile-item .profile-container a
+//  {
+//     color: #ffffff !important;
+// }
+
+// .layout-topbar .layout-topbar-left .menu-button .menu-button-icon,
+// .layout-topbar .layout-topbar-left .menu-button .menu-button-icon:after,
+// .layout-topbar .layout-topbar-left .menu-button .menu-button-icon::before
+//  {
+//     background-color: #3d0606 !important;
+// }
+
+// .layout-wrapper .layout-content-wrapper .layout-content{
+//     padding: 1rem;
+//     border-radius: 0;
+// }
+
+// .layout-wrapper .layout-content-wrapper .layout-content,
+// .layout-wrapper .layout-content-wrapper{
+//     border-radius: 0;
+// }
+
+// @media screen and (min-width: 992px){
+// .layout-wrapper.layout-static .layout-content-wrapper {
+//     margin-left: 18rem !important;
+// }
+// .layout-wrapper.layout-static-inactive .layout-content-wrapper {
+//     margin-left: 0rem !important;
+//     width: calc(100% - 0rem) !important;
+// }
+// }
+
+
+
+// @media screen and (max-width: 991px){
+// .layout-wrapper .layout-sidebar, .layout-wrapper .layout-content-wrapper {
+//     width: 100% !important;
+// }
+// }
+
+// /* Hide scrollbar for Chrome, Safari and Opera */
+// .layout-sidebar::-webkit-scrollbar {
+//     display: none !important;
+// }
+
+// /* Hide scrollbar for IE, Edge and Firefox */
+// .layout-sidebar {
+//   -ms-overflow-style: none !important;  /* IE and Edge */
+//   scrollbar-width: none !important;  /* Firefox */
+// }
+

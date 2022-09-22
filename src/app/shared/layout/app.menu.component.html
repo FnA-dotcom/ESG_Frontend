@@ -1,0 +1,26 @@
+<!-- <div class="layout-sidebar"  (click)="app.onMenuClick()">
+    <div class="layout-menu-container">
+        <ul class="layout-menu">
+            <li app-menuitem *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true"></li>
+        </ul>
+    </div>
+</div> -->
+
+<div style="background-color: #21332a;"  class="layout-sidebar my_scroll_div_sidebar innerScroll_sidebar"  (click)="app.onMenuClick()">
+    <div class="p-1 m-1">
+        
+        <p-dropdown [options]="facilityList"  [style]="{width: '180px'}" class="p-inputtext-sm" placeholder="Facility" [(ngModel)]="value3"></p-dropdown>
+        
+        <!-- <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            
+            <input type="text" class="p-inputtext-sm" pInputText placeholder="Search" [(ngModel)]="" />
+        </span> -->
+    </div>
+        <p-panelMenu [multiple]="false" class="mt-1" [model]="model1"></p-panelMenu>
+        
+   
+</div>
+
+
+

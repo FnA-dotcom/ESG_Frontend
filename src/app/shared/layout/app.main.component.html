@@ -1,0 +1,61 @@
+<div class="layout-wrapper" [ngClass]="{'layout-slim': app.menuMode === 'slim',
+                                        'layout-static': app.menuMode === 'static',
+                                        'layout-mobile-active': staticMenuMobileActive,
+                                        'layout-static-inactive': staticMenuDesktopInactive && app.menuMode === 'static',
+                                        'p-input-filled': app.inputStyle === 'filled', 'p-ripple-disabled': !app.ripple}"
+     (click)="onLayoutClick()">
+
+    <app-topbar>
+
+
+    </app-topbar>
+
+    <app-menu></app-menu>
+
+    <div class="layout-content-wrapper">
+        <div class="layout-content">
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- <app-footer></app-footer> -->
+    </div> 
+    
+
+    <!-- <app-config></app-config> -->
+</div>
+
+<p-dialog header="Session Logged Out" position="top" [modal]="true" [(visible)]="diplayTimeOutDialog" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false" [closable]="false">
+    <p>You have been logged out due to inactivity, please enter your password to continue</p>
+
+    <br>
+
+    <div class="p-fluid grid mt-1">
+
+    
+
+    <div class="col-12 md:col-4 py-1">
+        <div class="field mb-0">
+            <span class="p-float-label">
+                <input [(ngModel)]="currentUsername" id="loggedOutUserName" class="p-inputtext-sm" type="text" pInputText />
+                <label for="cpt">Username</label>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-4 py-1">
+        <div class="field mb-0">
+            <span class="p-float-label">
+                <input [(ngModel)]="password" id="loggedOutPassword" class="p-inputtext-sm" type="password" pInputText />
+                <label for="cpt">Password</label>
+            </span>
+        </div>
+    </div>
+
+</div>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple (click)="logout()" type="button" label="Back to Sign-in" class="p-button-secondary"></button>
+            <button pButton pRipple (click)="login()" type="button" label="Login" class="p-button-success"></button>
+        </ng-template>
+</p-dialog>

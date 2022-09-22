@@ -1,0 +1,369 @@
+<div class="login-body flex flex-column align-items-center justify-content-center">
+    <div class="cards " style="width: 70%; ">
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+            <div class="p-fluid grid">
+                <div class="col-12 md:col-6" style="background-color:#21332a ;">
+                    <br><br><br><br><br><br>
+                    <div class="flex justify-content-center">
+
+                        <p-image src="./assets/layout/images/logo-dark.png" alt="Image" width="300">
+                        </p-image>
+                    </div>
+
+
+
+                    <br>
+                    <div class="flex justify-content-center mt-4">
+                        <!-- <p style="color: white;">Decarbonizing of US Healthcare</p> -->
+                        
+                            <span style="color: white;" class="text-2xl line-height-3 font-light block"><i>Let’s build wellness rather than treat disease!</i> 
+                                 </span>
+                                
+                            
+                    </div>
+                    <!-- <div [style]="{'margin-top': '100px'}" class="flex justify-content-center align-items-center bg-transparent">
+
+                        <p-image src="./assets/layout/images/HIPAA.png" alt="Image" width="200"
+                        >
+                        </p-image>
+                    </div> -->
+
+                </div>
+
+
+
+                <div
+                    class="login-box-right col-12 md:col-6 py-1 flex flex-column align-items-center justify-content-center">
+                    <br>
+                    <!-- <h4 style="color: #006763 ;">Login Your Account</h4> -->
+
+                    <br><br><br><br><br><br>
+
+                    <div class="col-12 md:col-9 py-1">
+                        <div class="field mb-0">
+                            <span class="p-input-icon-left mb-3">
+                                <i [ngStyle]="{'margin-top': (submitted && loginForm.controls['userName'].invalid) || (loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched) ? '-0.9rem': '-0.5rem'}"
+                                    class="pi pi-user"></i>
+                                <input type="text" formControlName="userName" class="ng-dirty"
+                                    aria-describedby="username-help" pInputText placeholder="Username" />
+                                <small
+                                    *ngIf="(submitted && loginForm.controls['userName'].invalid) || (loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched)"
+                                    id="password-help" class="p-error">
+                                    User Name is required.
+                                </small>
+                                <small
+                                    *ngIf="userNameIncorrect && loginForm.controls['userName'].valid"
+                                    id="password-help" class="p-error">
+                                    User Name not valid.
+                                </small>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-12 md:col-9 py-1">
+                        <div class="field mb-0">
+                            <span class="p-input-icon-left mb-6">
+                                <i [ngStyle]="{'margin-top': (submitted && loginForm.controls['password'].invalid) || (loginForm.controls['password'].invalid && loginForm.controls['password'].touched) ? '-0.9rem': '-0.5rem'}"
+                                    class="pi pi-key"></i>
+                                <input type="password" class="ng-dirty" formControlName="password"
+                                    aria-describedby="password-help" pInputText placeholder="Password" />
+                                <small
+                                    *ngIf="(submitted && loginForm.controls['password'].invalid) || (loginForm.controls['password'].invalid && loginForm.controls['password'].touched)"
+                                    id="password-help" class="p-error">
+                                    Password is required.
+                                </small>
+                                <small
+                                *ngIf="passwordIncorrect && loginForm.controls['password'].valid"
+                                id="password-help" class="p-error">
+                                Password Incorrect.
+                            </small>
+                            </span>
+                        </div>
+
+                        <div class="flex justify-content-center">
+                            <div class=" md:col-4">
+
+                              
+                                <button type="submit" pButton pRipple label="Login" class="p-button-rounded customLoginButton"
+                                    icon="pi pi-sign-in"></button>
+
+
+
+                            </div>
+                        </div> <br>
+                        <div class="flex justify-content-center">
+
+                            <a style="color: #006763 ;cursor: pointer;" (click)="forgetPassword()">Forgot your password?</a><br><br><br>
+                        </div>
+                        <hr>
+                        <div class="flex justify-content-center">
+                            <p style="color: #006763 ;">Terms of Use | Privacy Policy | © 2022 M2D</p>
+                        </div>
+                        <br>
+                        <div class="flex justify-content-center">
+                            <div class="icon"><i class="pi pi-facebook"></i></div>
+                            <div class="icon"><i class="pi pi-instagram"></i></div>
+                            <div class="icon"><i class="pi pi-twitter"></i></div>
+                            <div class="icon"><i class="pi pi-linkedin"></i></div>
+
+
+
+
+                        </div>
+                        <br><br>
+
+                    </div>
+                </div>
+
+            </div>
+            <br>
+        </form>
+
+        <br>
+
+    </div>
+</div>
+
+
+
+<p-dialog *ngIf="showChangePassword" [closable]="false" [(visible)]="showChangePassword" [style]="{width: '40vw'}" header="First Time Login - Change Password" [draggable]="false" [modal]="true" styleClass="p-fluid">
+			
+	<ng-template pTemplate="content">
+        
+        <p>Please Enter the 6-digit verification code sent on your registered Email address (*******a@xyz.com) to proceed.</p>
+        <br>
+        <div class="formgrid grid mt-3">
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+                        [(ngModel)]="verificationCode"
+						id="verificationCode"
+						type="text"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+					/>
+					<label for="verificationCode">Verification Code</label>
+				</span>
+                
+			</div>
+			<div class="field col">
+                <button [disabled]="!verificationCode" pButton pRipple label="Verify" icon="pi pi-check" (click)="verifyCode()" class="p-button-success p-button-sm mr-2 mb-2"></button>
+			</div>                 
+              
+		</div>
+
+        <div style="display: flex; justify-content:space-between;">
+            <div>
+                <small *ngIf="verificationStatus" [style]="verificationStatus==='Successfull'?'color:green':'color:red'">{{verificationMessage}}</small>
+            </div>
+            <small *ngIf="verificationStatus!=='Successfull'" (click)="onResendVerificationCode()" style="color: #04a2fc ;cursor: pointer;">Resend Code</small>
+      
+        </div>
+
+       
+
+        
+<br>
+
+		<form [formGroup]="changePasswordForm">
+		
+		<div class="formgrid grid mt-3">
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+						formControlName="changePWcurrentPassword"
+						id="currentPassword"
+						[type]="showPasswordCheckbox?'text':'password'"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+					/>
+					<label for="currentPassword">Current Password</label>
+				</span>
+			</div>
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+						formControlName="changePWNewPassword"
+						id="changePWNewPassword"
+						[type]="showPasswordCheckbox?'text':'password'"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+                        (change)="ftPasswordValidation()"
+					/>
+					<label for="changePWNewPassword">New Password</label>
+				</span>
+			</div>                   
+		</div>
+		<div class="formgrid grid mt-3">
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+						formControlName="changePWConfirmNewPassword"
+						id="changePWConfirmNewPassword"
+						[type]="showPasswordCheckbox?'text':'password'"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+                        onpaste="return false"
+                        (change)="ftconfirmNewPassword()"
+					/>
+					<label for="changePWConfirmNewPassword">Confirm Password</label>
+				</span>
+			</div>                
+		</div>
+	</form>
+    <div class="field-checkbox">
+        <p-checkbox [(ngModel)]="showPasswordCheckbox" [binary]="true" inputId="binary"></p-checkbox>
+        <label for="binary">Show Password</label>
+    </div>
+    <small class="p-error">
+        Password Policy: <br>
+        Password Must be 8 Character Long <br>
+        Password Must Contain Atleast One Special Character <br>
+        Password Must Contain Atleast One Numeric Digit <br>
+        Password Must Contain Atleast One Upper Case and One Lower Case Letter <br>
+    </small>
+	</ng-template>
+	
+	<ng-template pTemplate="footer">
+		<button [disabled]="!changePasswordForm.valid" pButton pRipple label="Change Password" icon="pi pi-check" (click)="submitPasswordChange()" class="p-button-success p-button-sm mr-2 mb-2"></button>
+	</ng-template>
+</p-dialog>
+
+
+<p-dialog  (onHide)="resetForgetPassword()"  [(visible)]="showForgetPassword" [style]="{width: '40vw'}" header="Forget Password" [draggable]="false" [modal]="true" styleClass="p-fluid">
+	
+	<ng-template pTemplate="content">
+    <div *ngIf="showEmailCodeVerificationFields" >
+        <p>Please enter your Registered Email address to proceed.</p>
+        <br>
+        <form [formGroup]="forgetEmailForm" >
+        <div class="formgrid grid mt-3"  >
+            
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+                    formControlName="primaryEmail"
+                        [disabled]="forgetPasswordEmailVerificationStatus==='Successfull'"
+						id="forgetPasswordEmail"
+						style="width:20rem"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+                        
+                       
+					/>
+					<label for="forgetPasswordEmail">Email Address</label>
+				</span>
+                <small *ngIf="forgetEmailForm.controls['primaryEmail'].invalid && forgetEmailForm.controls['primaryEmail'].touched" class="p-error">email is required*</small>
+			</div>
+			<div class="field col">
+                <button [disabled]="forgetEmailForm.invalid|| forgetPasswordEmailVerificationStatus==='Successfull'" pButton pRipple label="Verify Email" icon="pi pi-check" (click)="verifyForgetPasswordEmail()" class="p-button-success p-button-sm mr-2 mb-2"></button>
+			</div>
+       	</div>
+    </form>       
+  
+        
+            <div>
+                <small *ngIf="forgetPasswordEmailVerificationStatus" [style]="forgetPasswordEmailVerificationStatus==='Successfull'?'color:green':'color:red'">{{forgetPasswordEmailMessage}}</small>
+            </div>    
+
+    <div *ngIf="forgetPasswordEmailVerificationStatus==='Successfull'">
+        <br>
+        <div class="formgrid grid mt-3">
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+                        [(ngModel)]="forgetPasswordVerificationCode"
+                        [disabled]="forgetPasswordVerificationStatus==='Successfull'"
+						id="forgetPasswordVerificationCode"
+						type="text"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+					/>
+					<label for="forgetPasswordVerificationCode">Verification Code</label>
+				</span>
+                
+			</div>
+			<div class="field col">
+                <button [disabled]="!forgetPasswordVerificationCode || forgetPasswordVerificationStatus==='Successfull'" pButton pRipple label="Verify Code" icon="pi pi-check" (click)="verifyForgetPWVerificationCode()" class="p-button-success p-button-sm mr-2 mb-2"></button>
+			</div>                 
+              
+		</div>
+
+        <div style="display: flex; justify-content:space-between;">
+            <div>
+                <small *ngIf="forgetPasswordVerificationStatus" [style]="forgetPasswordVerificationStatus==='Successfull'?'color:green':'color:red'">{{forgetPasswordVerificationMessage}}</small>
+            </div>
+            <small *ngIf="forgetPasswordVerificationStatus!=='Successfull'" (click)="onResendVerificationCode()" style="color: #04a2fc ;cursor: pointer;">Resend Code</small>
+      
+        </div>
+    </div>
+
+    </div>
+
+    <br>
+
+    <div *ngIf="forgetPasswordVerificationStatus==='Successfull'">
+
+        <p *ngIf="forgetPasswordVerificationStatus" [style]="forgetPasswordVerificationStatus==='Successfull'?'color:green':'color:red'">{{forgetPasswordVerificationMessage}}</p>
+        <br>
+    <form [formGroup]="forgetPasswordNewPasswordForm">
+		
+		<div class="formgrid grid mt-3">
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+						formControlName="forgetPWNewPassword"
+						id="currentPassword"
+						[type]="showPasswordCheckbox?'text':'password'"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+                        (change)="passwordValidation()"
+					/>
+					<label for="currentPassword">New Password</label>
+				</span>
+			</div>
+			<div class="field col">
+				<span class="p-float-label">
+					<input
+						formControlName="forgetPWConfirmNewPassword"
+						id="changePWNewPassword"
+						[type]="showPasswordCheckbox?'text':'password'"
+						class="p-inputtext-sm ng-dirty"
+						pInputText
+                        (change)="confirmNewPassword()"
+                        onpaste="return false"
+					/>
+					<label for="changePWNewPassword">Confirm New Password</label>
+				</span>
+			</div>                   
+		</div>
+    </form>
+        <div class="field-checkbox">
+            <p-checkbox [(ngModel)]="showPasswordCheckbox" [binary]="true" inputId="binary"></p-checkbox>
+            <label for="binary">Show Password</label>
+        </div>
+        <small class="p-error">
+            Password Policy: <br>
+            Password Must be 8 Character Long <br>
+            Password Must Contain Atleast One Special Character <br>
+            Password Must Contain Atleast One Numeric Digit <br>
+            Password Must Contain Atleast One Upper Case and One Lower Case Letter <br>
+        </small>
+
+    
+    </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+		<button *ngIf="forgetPasswordVerificationStatus==='Successfull'" [disabled]="!forgetPasswordNewPasswordForm.valid" pButton pRipple label="Change Password" icon="pi pi-check" (click)="submitForgetPasswordChange()" class="p-button-success p-button-sm mr-2 mb-2"></button>
+	</ng-template>
+
+
+
+    
+</p-dialog>
+
+<p-toast></p-toast>
+

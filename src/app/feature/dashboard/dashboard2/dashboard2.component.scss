@@ -1,0 +1,57 @@
+.innerScroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .innerScroll::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 10px;
+  }
+  
+  .innerScroll::-webkit-scrollbar-thumb {
+    background-color: #4C63B6;
+    // background-color: red;
+    border-radius: 100px;
+  }
+  @media only screen and (min-height: 600px) and (max-height: 700px) {
+    // Laptop
+      .my_scroll_div {
+        overflow: scroll;
+        max-height: 80vh;
+        max-width: 100%;
+        overflow-x: hidden;
+        // background-color: #4C63B6;
+      }
+    }
+    
+    // For LCD
+    @media only screen and  (min-height: 700px) and (max-height: 800px) {
+    
+      .my_scroll_div {
+        overflow: scroll;
+        max-height: 85vh;
+        max-width: 100%;
+        overflow-x: hidden;
+        // background-color: red;
+      }
+    }
+    
+    @media only screen and (min-height: 800px) and (max-height: 900px) {
+    
+      .my_scroll_div {
+        overflow: scroll;
+        max-height: 48vh;
+        max-width: 100%;
+        overflow-x: hidden;
+      
+      }
+    }
+    @media  only screen and  (min-height: 900px) and (max-height: 1100px) {
+    
+      .my_scroll_div {
+        overflow: scroll;
+        max-height: 90vh;
+        max-width: 100%;
+        overflow-x: hidden;
+        // background-color: red;
+      }
+    }

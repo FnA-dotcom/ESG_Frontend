@@ -1,0 +1,193 @@
+<!-- <div class="my_scroll_div innerScroll"> -->
+    <div class="card">
+
+        <h5>CO2 Reduction</h5>
+        <div class="p-fluid grid mt-4">
+    
+            <!-- <div class="col-12 md:col-3 py-1">
+                <div class="field mb-0">
+                    <span class="p-float-label">
+                        <p-dropdown [disabled]="true" appendTo="body" inputId="dropdown" [autoDisplayFirst]="false" [options]="org"
+                            [(ngModel)]="selectedOrganization" ></p-dropdown>
+                        <label for="dropdown">Organization</label>
+                    </span>
+                </div>
+            </div> -->
+            <div class="col-12 md:col-3 py-1">
+                <div class="field mb-0">
+                    <span class="p-float-label">
+                        <p-dropdown appendTo="body" inputId="dropdown" [autoDisplayFirst]="false" [options]="periods"
+                            [(ngModel)]="selectedPeriod"></p-dropdown>
+                        <label for="dropdown">Period</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+    
+    </div>
+    
+    
+    <hr>
+        <div class="p-fluid grid mt-4">
+    
+            <div class="col-12 md:col-7 py-1">
+                <div class="card">
+                    <h4>Total Carbon Emissions 30+CO2</h4>
+                    <hr>
+                <div class="field mb-0 mt-4 mb-8" > 
+                    <div class="mt-8"> 
+                    <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>
+                </div>        
+                </div>
+            </div>
+            </div>
+           
+            <div class="col-12 md:col-5 -mt-3 ">
+                <div class="card">
+                    <h4>Top Emission by Type</h4>
+                    <hr>
+                    <div class="field mb-0 p-5" >          
+                        <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '30%'}"></p-chart>
+                   
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="layout-dashboard">
+            <h4>Scope Reports</h4>
+            <div class="grid">
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-1 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-users text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block  ">Scope 1</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#035388'}">900</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/users'+ '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-2 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-shield text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block ">Scope 2</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#CB6E17'}">200</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/locations' + '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-3 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-dollar text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block white-space-nowrap overflow-hidden">Scope 3</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#147D64'}">8560</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/rate' + '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-4 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-comments text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block">Reduction Strategies</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#6551B7'}">650</span>
+                            </div>
+                        </div>
+                        <img [src]="'assets/layout/images/dashboard/interactions' + '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+        
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-2 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-map text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block ">Co2 Footprint calculator</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#CB6E17'}">880</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/locations' + '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-3 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-directions text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block white-space-nowrap overflow-hidden">Life Cycle Analysis</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#147D64'}">10</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/rate' + '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-1 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-users text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block  ">Co2 Emission reduction</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#035388'}">900</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/users'+ '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 lg:col-3">
+                    <div class="card p-0 widget-overview-box widget-overview-box-3 md:h-full md:relative">
+                        <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
+                            <i class="pi pi-directions text-6xl"></i>
+                            <div class="pl-3 overflow-hidden">
+                                <span class="header block white-space-nowrap overflow-hidden">Scope 3 Indirect Emissions</span>
+                                <span class="block text-4xl font-bold" [style]="{'color':'#147D64'}">10</span>
+                            </div>
+                        </div>
+                        <img
+                            [src]="'assets/layout/images/dashboard/rate-dark' + '.svg'"
+                            class="w-full md:absolute md:bottom-0" alt="users">
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+     
+    
+           
+      
+    
+    
+    
+    <!-- <div class="grid">
+            <div class="col-12">
+                <div class="card">
+    
+                    <p-chart type="bar" [data]="marketingData" [options]="marketingDataOptions"></p-chart>
+                </div>
+    
+            </div>
+        </div> -->
+    <!-- </div> -->
