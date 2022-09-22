@@ -46,10 +46,10 @@
                 <hr>
                 <div class="field mb-0 mt-4 mb-8">
                     <div class="mt-5">
-                        <div>
-                            <h6>CO2 in Tons</h6>
+                        <div class="-mb-3">
+                            <h6>tCo2</h6>
                         </div>
-                        <p-chart type="bar" [data]="scope1" [options]="stackedOptions"></p-chart>
+                        <p-chart type="bar" [data]="scope1" [options]="scope1Options"></p-chart>
                     </div>
                 </div>
             </div>
@@ -70,9 +70,11 @@
                 <hr>
                 <div class="field mb-0 mt-4 mb-8">
                     <div class="mt-5">
-                        
-                       <h6>CO2 in Tons</h6>
-                        <p-chart type="bar" [data]="scope2" [options]="stackedOptions"></p-chart>
+                        <div class="-mb-3">
+                            <h6>tCo2</h6>
+                        </div>
+                    
+                        <p-chart type="bar" [data]="scope2" [options]="scope2Options"></p-chart>
                     </div>
                 </div>
             </div>
@@ -93,10 +95,12 @@
                     </div>
                 </div>
                 <hr>
-                <div class="field mb-0 mt-4 mb-8">
-                    <div class="mt-8">
-                        <p-chart type="bar" [data]="scope3" [options]="stackedOptions"></p-chart>
+                <div class="field mb-0 ">
+                    <div class="-mb-3">
+                        <h6>tCo2</h6>
                     </div>
+                        <p-chart type="bar" [data]="scope3" [options]="scope3Options"></p-chart>
+                  
                 </div>
             </div>
         </div>
