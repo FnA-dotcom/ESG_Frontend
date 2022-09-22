@@ -206,7 +206,7 @@ schertzPieData={
                 type: 'bar',
                 label: ['Scope1 Report',],
                 backgroundColor: ['#141615', '#1d352b', '#4C8554', '#A0B588'],
-                data: [85, 52, 78, 100, + "CO2"]
+                data: [85, 52, 78, 100,]
             },
 
         ]
@@ -223,6 +223,19 @@ schertzPieData={
 
         ]
     };
+
+    this.stackedOptions={
+        title: {
+            display: true,
+            text: 'My Title',
+            fontSize: 16
+        },
+        legend: {
+            position: 'bottom'
+        }
+    };
+
+    
 
   }
      updateChartOptions() {
