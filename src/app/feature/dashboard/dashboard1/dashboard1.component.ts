@@ -29,23 +29,28 @@ export class Dashboard1Component implements OnInit {
     scope3: any;
     scope3Options:any;
 
-
+    card1Counter=100;
 
 
     marketingData;
     marketingDataOptions;
 
     org = [
-        'floresville',
-        'schertz',
+        'Floresville',
+        'Schertz',
 
     ];
     periods = [
-        '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022',
+       '2018', '2019', '2020', '2021', '2022',
     ];
+
+    categories=[
+        'Vehicle', 'Building', 'Electrical', 'Goods & Supply'
+    ]
 
     selectedOrganization;
     selectedPeriod;
+    selectedCategory;
     selectedRecievedDate;
     configService: any;
     config: any;
@@ -187,15 +192,17 @@ export class Dashboard1Component implements OnInit {
 
     ngOnInit(): void {
 
+        this.getCard1Counter();
+
         this.selectedOrganization = localStorage.getItem('facilityName');
 
-        if (this.selectedOrganization === 'schertz') {
-            this.stackedData = this.schertzBarData;
-            this.data = this.schertzPieData
+        if (this.selectedOrganization === 'Schertz') {
+            // this.stackedData = this.schertzBarData;
+            // this.data = this.schertzPieData
         }
         else {
-            this.stackedData = this.florenceBarData;
-            this.data = this.florencePieData;
+            // this.stackedData = this.florenceBarData;
+            // this.data = this.florencePieData;
         }
 
 
@@ -381,6 +388,24 @@ export class Dashboard1Component implements OnInit {
         }
     }
 
+
+    getCard1Counter()
+    {
+      
+       const interval = setInterval(() => {
+          if(this.card1Counter>=899)
+          {clearInterval(interval)}
+          this.card1Counter++;
+        }, 1);
+        
+      
+    }
+    
+    onFacilitySelection(event)
+    {
+        localStorage.setItem('facilityName',event.value)
+
+    }
 
 
 }

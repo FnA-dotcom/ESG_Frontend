@@ -20,7 +20,8 @@ export class Dashboard2Component implements OnInit {
   ptVisistsPerMonthData;
   ptVisistsPerMonthDataOptions;
 
-
+  selectedOrganization;
+  selectedPeriod;
 
   monthlyVisitsByDoctorData;
   monthlyVisitsByDoctorOptions;
@@ -28,6 +29,14 @@ export class Dashboard2Component implements OnInit {
   userAccessSourceData;
   userAccessSourceOptions;
   
+  org = [
+    'Floresville',
+    'Schertz',
+
+];
+periods = [
+   '2018', '2019', '2020', '2021', '2022',
+];
 
   schertzStackedData={
     labels: ['RI 1', 'RI 2', 'RI 3', 'RI 4', ],
@@ -222,6 +231,8 @@ floresvilleVisitPerMonth={
 
   ngOnInit(): void {
 
+    this.selectedOrganization = localStorage.getItem('facilityName');
+
     let locationName=localStorage.getItem('facilityName');
 
     if(locationName==='schertz')
@@ -350,5 +361,11 @@ this.scope1 = {
 
 
   }
+
+  onFacilitySelection(event)
+    {
+        localStorage.setItem('facilityName',event.value)
+
+    }
 
 }

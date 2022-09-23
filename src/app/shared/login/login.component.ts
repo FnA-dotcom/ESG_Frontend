@@ -112,7 +112,8 @@ export class LoginComponent implements OnInit {
     if(user === 'admin')
     {
       
-      this.router.navigate(['/esg/dashboard/dashboard-1'])
+      this.router.navigate(['/esg/dashboard/dashboard-1']);
+      localStorage.setItem('facilityName','Schertz');
       
     }
     else if(user === 'lab')

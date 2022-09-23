@@ -1,4 +1,42 @@
-<div class="p-fluid grid mt-4">
+
+<div class="card">
+
+    <!-- <h5>CO2 Reduction</h5> -->
+    <div class="p-fluid grid mt-4">
+
+        <div class="col-12 md:col-2 py-1">
+            <div class="field mb-0">
+                <span class="p-float-label">
+                    <p-dropdown appendTo="body" (onChange)="onFacilitySelection($event)" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="org"
+                        [(ngModel)]="selectedOrganization" ></p-dropdown>
+                    <label for="dropdown">Facility</label>
+                </span>
+            </div>
+        </div>
+        <div class="col-12 md:col-2 py-1">
+            <div class="field mb-0">
+                <span class="p-float-label">
+                    <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
+                        [(ngModel)]="selectedPeriod"></p-dropdown>
+                    <label for="dropdown">Period</label>
+                </span>
+            </div>
+        </div>
+        
+        <!-- <div class="col-12 md:col-2 py-1">
+            <div class="field mb-0">
+                <span class="p-float-label">
+                    <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="categories"
+                        [(ngModel)]="selectedCategory"></p-dropdown>
+                    <label for="dropdown">Category</label>
+                </span>
+            </div>
+        </div> -->
+    </div>
+</div>
+    <hr>
+
+ <div class="p-fluid grid mt-4">
 
     <div class="col-12 md:col-7 py-1">
         <div class="card">
