@@ -14,6 +14,7 @@ import {
     ApexFill,
     ApexTooltip
   } from "ng-apexcharts";
+  import {ApexNonAxisChartSeries,ApexResponsive,} from "ng-apexcharts";
 
   export type ChartOptions = {
     series: ApexAxisChartSeries;
@@ -29,6 +30,16 @@ import {
     
   };
 
+  export type ChartOptions1 = {
+    series: ApexNonAxisChartSeries;
+    chart: ApexChart;
+    responsive: ApexResponsive[];
+    labels: any;
+    legend: ApexLegend;
+    dataLabels:ApexDataLabels;
+    color: any[];
+  };
+
 @Component({
     selector: 'app-dashboard1',
     templateUrl: './dashboard1.component.html',
@@ -37,6 +48,9 @@ import {
 export class Dashboard1Component implements OnInit {
     @ViewChild("chart") chart: ChartComponent;
     public chartOptions: Partial<ChartOptions>;
+
+    @ViewChild("chart1") chart1: ChartComponent;
+    public chartOptions1: Partial<ChartOptions1>;
     
 
     fromDate = undefined;
@@ -228,6 +242,38 @@ export class Dashboard1Component implements OnInit {
     constructor(private dateService: DateService) { }
 
     ngOnInit(): void {
+
+        this.chartOptions1 = {
+            series: [44 , 55,10, 50,67],
+            // colors: [ ],
+         chart: {
+              width: 380,            
+            //   type: "donut",
+              type: "pie",
+
+            },
+                        // colors: ['#ffffff', '#A5978B', '#8D5B4C', '#5A2A27', '#C4BBAF'],
+            labels: ["Vehicle", "Technology", "Building","Manufacturing", "Other" ],
+            color: ['#21332a', '#315e3f','#4c8554' ,'#dad8cd','#A0b588'] ,
+            responsive: [
+                {
+                    breakpoint: 480,
+                    options: {
+                        colors: '#ffffff',
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: "top"
+                        },
+                 
+                      
+                    }
+                 
+                }
+            ],
+        };
+
 
         this.getChartOptions();
 
