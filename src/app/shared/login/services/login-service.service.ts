@@ -9,7 +9,7 @@ export class LoginServiceService {
 
   login(loginDetails:any)
   {
-    if(loginDetails.userName==='ceo' && loginDetails.password==='abc123')
+    if(loginDetails.userName==='fawad' && loginDetails.password==='abc123')
     {
       localStorage.setItem('userName','ABC');
       localStorage.setItem('facilityType','facility');

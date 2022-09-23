@@ -2,7 +2,7 @@
 <div class="card">
 
     <!-- <h5>CO2 Reduction</h5> -->
-    <div class="p-fluid grid mt-4">
+    <div class="p-fluid grid mt-1">
 
         <div class="col-12 md:col-2 py-1">
             <div class="field mb-0">
@@ -23,233 +23,152 @@
             </div>
         </div>
         
-        <!-- <div class="col-12 md:col-2 py-1">
-            <div class="field mb-0">
-                <span class="p-float-label">
-                    <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="categories"
-                        [(ngModel)]="selectedCategory"></p-dropdown>
-                    <label for="dropdown">Category</label>
-                </span>
-            </div>
-        </div> -->
     </div>
 </div>
     <hr>
 
- <div class="p-fluid grid mt-4">
+    <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [dataLabels]="chartOptions.dataLabels"
+          [plotOptions]="chartOptions.plotOptions"
+          [xaxis]="chartOptions.xaxis"
+          [colors]="chartOptions.color">
+        ></apx-chart>
+      </div>
 
-    <div class="col-12 md:col-7 py-1">
-        <div class="card">
-            <h4>Reduction Initiative</h4>
-            <hr>
-            <div class="field mb-0 mt-4 mb-8">
-                <div class="mt-8">
-                    <div class="-mb-3">
-                        <h6>tCo2</h6>
-                    </div>
-                    <p-chart type="bar" [data]="scope1" [options]="stackedOptions"></p-chart>
+
+<p-dialog position="top" [header]="innerModalHeader + ' | Actual/Target Emissions'" [(visible)]="showModal" [modal]="true" [style]="{width: '90vw',height:'90vh'}"
+[draggable]="false" [resizable]="false">
+
+<div class="grid">
+    <div class="col-12 md:col-4">
+        <h4>Scope 1</h4>
+    </div>
+    <div class="col-12 md:col-4">
+        <h4>Scope 2</h4>
+    </div>
+    <div class="col-12 md:col-4">
+        <div style="display: flex;justify-content:space-between">
+        <h4>Scope 3</h4>
+
+        <div class="field mb-0">
+            <span class="p-float-label">
+                <p-dropdown appendTo="body" inputId="dropdown" [style]="{width: '200px'}" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
+                    [(ngModel)]="innerSelectedPeriod"></p-dropdown>
+                <label for="dropdown">Period</label>
+            </span>
+        </div>
+
+    </div>
+
+    </div>
+</div>
+
+
+<div class="grid">
+    <div class="col-12 md:col-4">
+        <div class="card ">
+            <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                <div class="ml-3 mb-2 md:mb-0">
+                <span class="text-3xl line-height-3 font-light">Actual</span>
+                <br>
+                <span class="text-3xl font-normal">900 </span>
+                <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-4">
+        <div class="card ">
+            <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                <div class="ml-3 mb-2 md:mb-0">
+                    <span class="text-3xl line-height-3 font-light">Actual</span>
+                    <br>
+                    <span class="text-3xl font-normal">750 </span>
+                    <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-4">
+        <div class="card ">
+            <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                <div class="ml-3 mb-2 md:mb-0">
+                    <span class="text-3xl line-height-3 font-light">Actual</span>
+                    <br>
+                    <span class="text-3xl font-normal">800 </span>
+                    <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-4">
+        <div class="card ">
+            <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                <div class="ml-3 mb-2 md:mb-0">
+                    <span class="text-3xl line-height-3 font-light">Target</span>
+                    <br>
+                    <span class="text-3xl font-normal">600 </span>
+                    <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-4">
+        <div class="card ">
+            <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                <div class="ml-3 mb-2 md:mb-0">
+                    <span class="text-3xl line-height-3 font-light">Target</span>
+                    <br>
+                    <span class="text-3xl font-normal">550 </span>
+                    <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-4">
+        <div class="card ">
+            <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                <div class="ml-3 mb-2 md:mb-0">
+                    <span class="text-3xl line-height-3 font-light">Target</span>
+                    <br>
+                    <span class="text-3xl font-normal">650 </span>
+                    <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-12 md:col-5 -mt-3 ">
+    <div class="col-12 md:col-7 py-1">
         <div class="card">
-            <h4>Top Emission by Scope</h4>
-            <hr>
-            <div class="field mb-0 p-8">
-                <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '30%'}"></p-chart>
+            <!-- <h4>Reduction Initiative</h4> -->
+            <div class="field mb-0">
+                <div class="mt-2">
+                    <div class="">
+                        <h6>tCo2</h6>
+                    </div>
+                    <p-chart type="bar" [data]="scope1"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 50bvh;" class="col-12 md:col-5">
+        <div class="card">
+            <div class="field mb-0 p-2">
+                <p-chart type="doughnut" [data]="data" [options]="chartOptions" width="400px" height="350px"></p-chart>
+                <!-- <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '100%'}"></p-chart> -->
             </div>
             
         </div>
     </div>
 </div>
-<!-- <div class="p-fluid grid mt-4">
 
-    <div class="col-12 md:col-4 py-1">
-        <div class="card">
-            <h4>Scope 1</h4>
-            <p>Direct Emission</p>
-            <hr>
 
-            <div class="flex flex-wrap align-items-start justify-content-around pt-5">
 
-
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-building" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Company <br> Facilites</span>
-
-                </div>
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-car" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Company <br> Vehicle</span>
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-    </div>
-
-    <div class="col-12 md:col-3 -mt-3 ">
-        <div class="card">
-            <h4>Scope 2</h4>
-            <p>Indirect Emission</p>
-            <hr>
-            <div class="flex flex-wrap align-items-start justify-content-around pt-5">
-
-
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-plus" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Company <br> Facilites</span>
-
-                </div>
-
-
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-12 md:col-5 -mt-3 ">
-        <div class="card">
-            <h4>Scope 3</h4>
-            <p>Direct Emission</p>
-            <hr>
-            <div class="flex flex-wrap align-items-start justify-content-around pt-5">
-
-
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-credit-card" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Purchased Good & Service</span>
-
-                </div>
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-shopping-cart" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Capital Goods</span>
-
-                </div>
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-sun" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Fuel & Energy</span>
-
-                </div>
-
-
-
-
-
-
-            </div>
-            <div class="flex flex-wrap align-items-start justify-content-around pt-5">
-
-
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-car" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Transportation & Distribution</span>
-
-                </div>
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-trash" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3 ">Waste From Operations</span>
-
-                </div>
-                <div class="flex flex-column align-items-center justify-content-center mb-2">
-                    <div class="  flex align-items-center justify-content-center ">
-                        <span><i class="pi pi-money-bill" style="font-size: 30px; color: #21332a;"></i></span>
-
-                    </div>
-                    <span class="font-bold mt-3">Busines Travel</span>
-
-                </div>
-
-
-
-
-
-
-            </div>
-        </div>
-
-    </div>
-</div> -->
-
-<!-- <div class="grid">
-    <div class="col-12 lg:col-12">
-        <div class="card widget-overview-chart h-full">
-            <div class="card-header">
-                <span class="font-bold">Visits Per Month</span>
-            </div>
-
-            <div class="graph mb-3">
-                <p-chart type="bar" [data]="ptVisistsPerMonthData" [options]="ptVisistsPerMonthDataOptions"></p-chart>
-            </div>
-
-        </div>
-    </div>
-
-
-
-</div> -->
-
-
-
-<!-- <div class="grid">
-    <div class="col-12 lg:col-6">
-        <div class="card widget-overview-chart h-full">
-            <div class="card-header">
-                <span class="font-bold">Monthly Visits By Doctor</span>
-
-            </div>
-
-            <div class="graph mb-3">
-                <p-chart type="radar" [data]="monthlyVisitsByDoctorData" [options]="monthlyVisitsByDoctorOptions">
-                </p-chart>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="col-12 lg:col-6">
-        <div class="card widget-overview-chart h-full">
-            <div class="card-header">
-                <span class="font-bold">User Access Source</span>
-
-            </div>
-
-            <div class="graph mb-3">
-                <p-chart type="pie" [data]="userAccessSourceData" [options]="userAccessSourceOptions"></p-chart>
-            </div>
-
-        </div>
-    </div>
-
-
-</div> -->
+    <!-- <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template> -->
+</p-dialog>
