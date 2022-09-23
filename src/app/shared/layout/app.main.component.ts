@@ -73,7 +73,7 @@ export class AppMainComponent implements OnInit {
     startWatchingTimeout()
     {
         let stopCounter=0;
-        this.bnIdle.startWatching(600).subscribe((res: boolean) => {
+        this.bnIdle.startWatching(3600).subscribe((res: boolean) => {
             if (res) {
               this.diplayTimeOutDialog=true;
               stopCounter++;
