@@ -2,6 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DateService } from 'src/app/shared/services/date.service';
 import {
+    ApexNonAxisChartSeries,
+    ApexResponsive,
+  
+
+} from "ng-apexcharts";
+import {
     ApexAxisChartSeries,
     ApexChart,
     ChartComponent,
@@ -13,9 +19,10 @@ import {
     ApexXAxis,
     ApexFill,
     ApexTooltip
-  } from "ng-apexcharts";
+} from "ng-apexcharts";
 
-  export type ChartOptions = {
+
+export type ChartOptions = {
     series: ApexAxisChartSeries;
     chart: ApexChart;
     dataLabels: ApexDataLabels;
@@ -26,7 +33,17 @@ import {
     tooltip: ApexTooltip;
     stroke: ApexStroke;
     legend: ApexLegend;
-    
+  
+
+};
+export type ChartOptions1 = {
+    series: ApexNonAxisChartSeries;
+    chart: ApexChart;
+    responsive: ApexResponsive[];
+    labels: any;
+    legend: ApexLegend;
+    dataLabels:ApexDataLabels;
+    color: any[];
   };
 
 @Component({
@@ -37,7 +54,11 @@ import {
 export class Dashboard1Component implements OnInit {
     @ViewChild("chart") chart: ChartComponent;
     public chartOptions: Partial<ChartOptions>;
+    @ViewChild("chart1") chart1: ChartComponent;
+    public chartOptions1: Partial<ChartOptions1>;
+   
     
+
 
     fromDate = undefined;
     toDate = undefined;
@@ -51,15 +72,15 @@ export class Dashboard1Component implements OnInit {
     subscription: Subscription;
 
     scope1: any;
-    scope1Options:any;
+    scope1Options: any;
 
     scope2: any;
-    scope2Options:any;
+    scope2Options: any;
 
     scope3: any;
-    scope3Options:any;
+    scope3Options: any;
 
-    card1Counter=100;
+    card1Counter = 100;
 
 
     marketingData;
@@ -71,10 +92,10 @@ export class Dashboard1Component implements OnInit {
 
     ];
     periods = [
-       '2018', '2019', '2020', '2021', '2022',
+        '2018', '2019', '2020', '2021', '2022',
     ];
 
-    categories=[
+    categories = [
         'Vehicle', 'Building', 'Electrical', 'Goods & Supply'
     ]
 
@@ -237,104 +258,132 @@ export class Dashboard1Component implements OnInit {
 
         this.chartOptions = {
             series: [
-              {
-                name: "Scope 1",
-                data: [44, 55, 57,87,14 ],
-                color: '#1d352b'
-              
-              },
-              {
-                name: "Scope 2",
-                data: [76, 85, 101, 102,44],
-                color:  '#315e3f'
-              },
-              {
-                name: "Scope 3",
-                data: [35, 41, 36,110,90 ],
-                color:  '#4c8554'
-              },
-           
-             
+                {
+                    name: "Scope 1",
+                    data: [44, 55, 57, 87, 14],
+                    color: '#1d352b'
+
+                },
+                {
+                    name: "Scope 2",
+                    data: [76, 85, 101, 102, 44],
+                    color: '#315e3f'
+                },
+                {
+                    name: "Scope 3",
+                    data: [35, 41, 36, 110, 90],
+                    color: '#4c8554'
+                },
+
+
             ],
             chart: {
-              type: "bar",
-              height: 350,
-              events:{
-                click:function(event, chartContext,config)
-                {
-                  console.log(config);
-                  // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
-                  // console.log(config.config.series[config.seriesIndex])
-                  // console.log(config.config.series[config.seriesIndex].name)
-                  // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex]);
-      
-                  if(config.config.series[config.seriesIndex].name === undefined)
-                  {
-                    return;
-                  }
-                  else if(config.config.series[config.seriesIndex].name === 'Net Profit')
-                  {
-                    alert('Net Profit Selected');
-                  }
-                  else if(config.config.series[config.seriesIndex].name === 'Revenue')
-                  {
-                    alert('Revenue Selected');
-                  }
-                  else if(config.config.series[config.seriesIndex].name === 'Free Cash Flow')
-                  {
-                    alert('Free Cash Flow Selected');
-                  }
+                type: "bar",
+                height: 350,
+                events: {
+                    click: function (event, chartContext, config) {
+                        console.log(config);
+                        // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
+                        // console.log(config.config.series[config.seriesIndex])
+                        // console.log(config.config.series[config.seriesIndex].name)
+                        // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex]);
+
+                        if (config.config.series[config.seriesIndex].name === undefined) {
+                            return;
+                        }
+                        else if (config.config.series[config.seriesIndex].name === 'Net Profit') {
+                            alert('Net Profit Selected');
+                        }
+                        else if (config.config.series[config.seriesIndex].name === 'Revenue') {
+                            alert('Revenue Selected');
+                        }
+                        else if (config.config.series[config.seriesIndex].name === 'Free Cash Flow') {
+                            alert('Free Cash Flow Selected');
+                        }
+                    }
                 }
-              }
             },
             legend: {
-              show:true,
-              position: 'top',
-              floating: true,
+                show: true,
+                position: 'top',
+                floating: true,
             },
             plotOptions: {
-              bar: {
-                horizontal: false,
-                columnWidth: "55%",
-              }
+                bar: {
+                    horizontal: false,
+                    columnWidth: "55%",
+                }
             },
             dataLabels: {
-              enabled: false,
-              // style: {
-              //   colors: ['#1d352b', '#315e3f', '#4c8554']
-              // }
+                enabled: false,
+                // style: {
+                //   colors: ['#1d352b', '#315e3f', '#4c8554']
+                // }
             },
             stroke: {
-              show: true,
-              width: 2,
-              colors: ['#1d352b', '#315e3f', '#4c8554']
+                show: true,
+                width: 2,
+                colors: ['#1d352b', '#315e3f', '#4c8554']
             },
             xaxis: {
-              categories: [
-                "2018",
-                "2019",
-                "2020",
-                "2021",
-                "2022"
-              ]
+                categories: [
+                    "2018",
+                    "2019",
+                    "2020",
+                    "2021",
+                    "2022"
+                ]
             },
             yaxis: {
-              title: {
-                text: " (tCO2)"
-              }
+                title: {
+                    text: " (tCO2)"
+                }
             },
             fill: {
-              opacity: 1,
-              colors: ['#1d352b', '#315e3f', '#4c8554',]
+                opacity: 1,
+                colors: ['#1d352b', '#315e3f', '#4c8554',]
             },
             tooltip: {
-              y: {
-                formatter: function(val) {
-                  return " " + val + " tCO2";
+                y: {
+                    formatter: function (val) {
+                        return " " + val + " tCO2";
+                    }
                 }
-              }
             }
-          };
+        };
+
+
+        this.chartOptions1 = {
+            series: [44 , 55,10, 50,67],
+            // colors: [ ],
+         chart: {
+              width: 380,            
+            //   type: "donut",
+              type: "pie",
+
+            },
+                        // colors: ['#ffffff', '#A5978B', '#8D5B4C', '#5A2A27', '#C4BBAF'],
+            labels: ["Vehicle", "Technology", "Building","Manufacturing", "Other" ],
+            color: ['#21332a', '#315e3f','#4c8554' ,'#dad8cd','#A0b588'] ,
+            responsive: [
+                {
+                    breakpoint: 480,
+                    options: {
+                        colors: '#ffffff',
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: "top"
+                        },
+                 
+                      
+                    }
+                 
+                }
+            ],
+            
+        };
 
 
         this.scope1 = {
@@ -349,7 +398,7 @@ export class Dashboard1Component implements OnInit {
 
             ]
         };
-        this.scope1Options =  {
+        this.scope1Options = {
             plugins: {
                 legend: {
                     labels: {
@@ -391,7 +440,7 @@ export class Dashboard1Component implements OnInit {
 
             ]
         };
-        this.scope2Options =  {
+        this.scope2Options = {
             plugins: {
                 legend: {
                     labels: {
@@ -424,8 +473,8 @@ export class Dashboard1Component implements OnInit {
 
         this.scope3 = {
             labels: ['Inhalers', 'Water', 'Waste', 'Business Travel', 'Energy well-to-tank', ' Medical Devices',
-                     'Medivines', 'Fright Transport', 'Business Service', 'Food Service', 'Construction', 'Contracted Health Service'
-                     , 'Manufacturing ', 'ICT', 'Staff Commuting'],
+                'Medivines', 'Fright Transport', 'Business Service', 'Food Service', 'Construction', 'Contracted Health Service'
+                , 'Manufacturing ', 'ICT', 'Staff Commuting'],
             datasets: [
                 {
                     type: 'bar',
@@ -439,7 +488,7 @@ export class Dashboard1Component implements OnInit {
             ]
         };
 
-        this. scope3Options =  {
+        this.scope3Options = {
             plugins: {
                 legend: {
                     labels: {
@@ -468,7 +517,7 @@ export class Dashboard1Component implements OnInit {
                         labelString: '% Cases/Status',
                         fontColor: '#757575',
                         fontSize: 12
-                      },
+                    },
                     grid: {
                         color: '#fff'
                     }
@@ -476,7 +525,7 @@ export class Dashboard1Component implements OnInit {
             }
         };
 
-       
+
 
         this.stackedOptions = {
             title: {
@@ -520,21 +569,18 @@ export class Dashboard1Component implements OnInit {
     }
 
 
-    getCard1Counter()
-    {
-      
-       const interval = setInterval(() => {
-          if(this.card1Counter>=899)
-          {clearInterval(interval)}
-          this.card1Counter++;
+    getCard1Counter() {
+
+        const interval = setInterval(() => {
+            if (this.card1Counter >= 899) { clearInterval(interval) }
+            this.card1Counter++;
         }, 1);
-        
-      
+
+
     }
-    
-    onFacilitySelection(event)
-    {
-        localStorage.setItem('facilityName',event.value)
+
+    onFacilitySelection(event) {
+        localStorage.setItem('facilityName', event.value)
 
     }
 
