@@ -1,28 +1,92 @@
 <div class="my_scroll_div innerScroll">
     <div class="card">
 
-        <h5>CO2 Reduction</h5>
+        <!-- <h5>CO2 Reduction</h5> -->
         <div class="p-fluid grid mt-4">
     
-            <!-- <div class="col-12 md:col-3 py-1">
+            <div class="col-12 md:col-2 py-1">
                 <div class="field mb-0">
                     <span class="p-float-label">
-                        <p-dropdown [disabled]="true" appendTo="body" inputId="dropdown" [autoDisplayFirst]="false" [options]="org"
+                        <p-dropdown (onChange)="onFacilitySelection($event)" appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="org"
                             [(ngModel)]="selectedOrganization" ></p-dropdown>
-                        <label for="dropdown">Organization</label>
+                        <label for="dropdown">Facility</label>
                     </span>
                 </div>
-            </div> -->
-            <div class="col-12 md:col-3 py-1">
+            </div>
+            <div class="col-12 md:col-2 py-1">
                 <div class="field mb-0">
                     <span class="p-float-label">
-                        <p-dropdown appendTo="body" inputId="dropdown" [autoDisplayFirst]="false" [options]="periods"
+                        <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
                             [(ngModel)]="selectedPeriod"></p-dropdown>
                         <label for="dropdown">Period</label>
                     </span>
                 </div>
             </div>
+            
+            <!-- <div class="col-12 md:col-2 py-1">
+                <div class="field mb-0">
+                    <span class="p-float-label">
+                        <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="categories"
+                            [(ngModel)]="selectedCategory"></p-dropdown>
+                        <label for="dropdown">Category</label>
+                    </span>
+                </div>
+            </div> -->
         </div>
+
+        <hr>
+
+        <div class="grid">
+            <div class="col-12 md:col-3">
+                <div class="card ">
+                    <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                        <div class="ml-3 mb-2 md:mb-0">
+                        <span class="text-3xl line-height-3 font-light">Scope 1</span>
+                        <br>
+                        <span class="text-3xl font-normal">{{card1Counter}} </span>
+                        <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-3">
+                <div class="card ">
+                    <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                        <div class="ml-3 mb-2 md:mb-0">
+                            <span class="text-3xl line-height-3 font-light">Scope 2</span>
+                            <br>
+                            <span class="text-3xl font-normal">{{card1Counter}} </span>
+                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-3">
+                <div class="card ">
+                    <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                        <div class="ml-3 mb-2 md:mb-0">
+                            <span class="text-3xl line-height-3 font-light">Scope 3  </span><span class="subtext"><i>(Upstream)</i></span>
+                            <br>
+                            <span class="text-3xl font-normal">{{card1Counter}} </span>
+                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-3">
+                <div class="card ">
+                    <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
+                        <div class="ml-3 mb-2 md:mb-0">
+                            <span class="text-3xl line-height-3 font-light">Scope 3  </span><span class="subtext"><i>(Downstream)</i></span>
+                            <br>
+                            <span class="text-3xl font-normal">{{card1Counter}} </span>
+                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     
     
     </div>

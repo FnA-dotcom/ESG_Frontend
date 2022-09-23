@@ -55,3 +55,18 @@
         // background-color: red;
       }
     }
+
+    :host {
+      ::ng-deep .ui-panelmenu
+      {
+          width: 250px;
+          border: 0px;
+      }
+      ::ng-deep  .card {
+          background: #ffffff;
+          padding: 1.5rem 1rem;
+          margin-bottom: 16px;
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1), 0px 24px 36px rgba(0, 0, 0, 0.04);
+          border-radius: 14px;
+        }
+  }
