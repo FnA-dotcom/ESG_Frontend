@@ -1,4 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ChartComponent,
+  ApexDataLabels,
+  ApexXAxis,
+  ApexPlotOptions
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  xaxis: ApexXAxis;
+  color: any[];
+};
 
 @Component({
   selector: 'app-dashboard2',
@@ -7,11 +24,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Dashboard2Component implements OnInit {
 
+  @ViewChild("chart") chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
+
   stackedData: any;
   stackedOptions: any;
 
-  data: any;
-  chartOptions: any;
+  // data: any;
+  // chartOptions: any;
 
   overviewChart;
 
@@ -28,6 +48,9 @@ export class Dashboard2Component implements OnInit {
 
   userAccessSourceData;
   userAccessSourceOptions;
+
+  innerSelectedPeriod;
+  innerModalHeader;
   
   org = [
     'Floresville',
@@ -37,6 +60,26 @@ export class Dashboard2Component implements OnInit {
 periods = [
    '2018', '2019', '2020', '2021', '2022',
 ];
+
+data={
+  labels: ['Actual','Target'],
+  datasets: [
+      {
+          data: [536, 447],
+          backgroundColor: [
+              "rgb(33, 51, 42)",
+              "rgb(76, 133, 84)",
+              
+          ],
+          // hoverBackgroundColor: [
+          //   "rgb(76, 61, 83)",
+          //   "rgb(227, 147, 29)",
+          // ]
+      }
+  ]
+};
+
+showModal:boolean=false;
 
   schertzStackedData={
     labels: ['RI 1', 'RI 2', 'RI 3', 'RI 4', ],
@@ -238,15 +281,87 @@ floresvilleVisitPerMonth={
     if(locationName==='schertz')
     {
       this.stackedData=this.schertzStackedData;
-      this.data=this.schertzPieData;
+      // this.data=this.schertzPieData;
       this.ptVisistsPerMonthData=this.schertzVisitPerMonth;
     }
     else
     {
       this.stackedData=this.floresvilleStackedData;
-      this.data=this.floresvillePieData;
+      // this.data=this.floresvillePieData;
       this.ptVisistsPerMonthData=this.floresvilleVisitPerMonth;
     }
+
+    this.chartOptions = {
+      series: [
+        {
+          name: "basic",
+          data: [150,450,300,400,100,150,350,450,250,280,380,150,180,290,192,285,366, ]
+   
+       
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 350,
+        events:{
+          click:(event, chartContext,config)=>
+          {
+            // console.log(config);
+            // console.log(chartContext);
+          //   console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
+          //   console.log(config.config.series[config.seriesIndex])
+          //   console.log(config.config.series[config.seriesIndex].name);
+          //   console.log();
+          //   console.log(config.config.xaxis.categories[config.dataPointIndex]);
+
+            let scopeType=config.config.series[config.seriesIndex].name;
+            let scopeValue=config.config.series[config.seriesIndex].data[config.dataPointIndex];
+            let scopeYear=config.config.xaxis.categories[config.dataPointIndex];
+
+            
+
+            this.innerModalHeader=scopeYear;
+
+            this.showModal=true;
+            
+          
+
+            
+            
+          }
+        }
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      color: ['#4c8554'],
+      xaxis: {
+        categories: [
+          "Stationary",
+          "Mobile ",
+          "Fugitive",
+          "Netherlands",
+          "Process emissions",
+          "Electricity",
+          "Steam",
+          "Heat",
+          "Cooling",
+          "Purchased services",
+          "Business travel",
+          "Employee",
+          "Waste disposal",
+          "Use of sold products",
+          "Investments",
+          "Leased assets",
+          "Franchises",
+        ]
+      }
+    };
   
   this.stackedOptions = {
     plugins: {
@@ -283,15 +398,18 @@ floresvilleVisitPerMonth={
 };
 
 this.scope1 = {
-  labels: ['RI 1','RI 2', 'RI 3', 'RI $'],
+  labels: ['Scope 1', 'Scope 2', 'Scope 3'],
   datasets: [
       {
-          type: 'bar',
-          label: ['Report',],
-          backgroundColor: ['#141615', '#1d352b', '#4C8554', '#A0B588'],
-          data: [85, 52, 78, 100,]
+          label: 'Actual',
+          backgroundColor: '#1D352B',
+          data: [65, 59, 80]
       },
-
+      {
+          label: 'Target',
+          backgroundColor: '#4C8554',
+          data: [28, 48, 40]
+      }
   ]
 };
 

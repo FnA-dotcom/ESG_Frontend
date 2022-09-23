@@ -1,15 +1,15 @@
+
 <div class="my_scroll_div innerScroll">
     <div class="card">
 
         <!-- <h5>CO2 Reduction</h5> -->
         <div class="p-fluid grid mt-4">
-
+    
             <div class="col-12 md:col-2 py-1">
                 <div class="field mb-0">
                     <span class="p-float-label">
-                        <p-dropdown (onChange)="onFacilitySelection($event)" appendTo="body" inputId="dropdown"
-                            class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="org"
-                            [(ngModel)]="selectedOrganization"></p-dropdown>
+                        <p-dropdown (onChange)="onFacilitySelection($event)" appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="org"
+                            [(ngModel)]="selectedOrganization" ></p-dropdown>
                         <label for="dropdown">Facility</label>
                     </span>
                 </div>
@@ -17,13 +17,13 @@
             <div class="col-12 md:col-2 py-1">
                 <div class="field mb-0">
                     <span class="p-float-label">
-                        <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false"
-                            [options]="periods" [(ngModel)]="selectedPeriod"></p-dropdown>
+                        <p-dropdown appendTo="body" (onChange)="onPeriodChange($event)" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
+                            [(ngModel)]="selectedPeriod"></p-dropdown>
                         <label for="dropdown">Period</label>
                     </span>
                 </div>
             </div>
-
+            
             <!-- <div class="col-12 md:col-2 py-1">
                 <div class="field mb-0">
                     <span class="p-float-label">
@@ -42,10 +42,10 @@
                 <div class="card ">
                     <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
                         <div class="ml-3 mb-2 md:mb-0">
-                            <span class="text-3xl line-height-3 font-light">Scope 1</span>
-                            <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                        <span class="text-3xl line-height-3 font-light">Scope 1</span>
+                        <br>
+                        <span class="text-3xl font-normal">{{card1Counter}} </span> <sup>(tCO2) </sup>
+                        <span class="subtext"><strong style="color: green;">&nbsp;&nbsp; +9%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@
                         <div class="ml-3 mb-2 md:mb-0">
                             <span class="text-3xl line-height-3 font-light">Scope 2</span>
                             <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                            <span class="text-3xl font-normal">{{card2Counter}} </span> <sup>(tCO2) </sup>
+                            <span class="subtext"><strong style="color: green;">&nbsp;&nbsp; +9%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -66,11 +66,10 @@
                 <div class="card ">
                     <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
                         <div class="ml-3 mb-2 md:mb-0">
-                            <span class="text-3xl line-height-3 font-light">Scope 3 </span><span
-                                class="subtext"><i>(Upstream)</i></span>
+                            <span class="text-3xl line-height-3 font-light">Scope 3  </span><span class="subtext"><i>(Upstream)</i></span>
                             <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                            <span class="text-3xl font-normal">{{card3Counter}} </span> <sup>(tCO2) </sup>
+                            <span class="subtext"><strong style="color: green;">&nbsp;&nbsp; +9%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -79,62 +78,69 @@
                 <div class="card ">
                     <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
                         <div class="ml-3 mb-2 md:mb-0">
-                            <span class="text-3xl line-height-3 font-light">Scope 3 </span><span
-                                class="subtext"><i>(Downstream)</i></span>
+                            <span class="text-3xl line-height-3 font-light">Scope 3  </span><span class="subtext"><i>(Downstream)</i></span>
                             <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                            <span class="text-3xl font-normal">{{card4Counter}} </span> <sup>(tCO2) </sup>
+                            <span class="subtext"><strong style="color: red;">&nbsp;&nbsp; -15%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-    </div>
-
-
-
-
+    
+    
+ 
+    
+    
+    
+    
     <hr>
-
-    <div class="p-fluid grid mt-4">
-
+    
+    <div class="p-fluid grid ">
+    
         <div class="col-12 md:col-8 py-1">
             <div class="card">
                 <!-- <div class="flex flex-wrap align-items-start justify-content-around"> -->
                 <!-- <div>
-                    <h4>Scope 1</h4>
+                    <h4>Scope 1</h4>-
                 </div>
                 <div>
                     <h6>Direct Emission</h6>
                 </div> -->
                 <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
                     <div class="ml-3 mb-2 md:mb-0">
-                        <span class="text-2xl line-height-3 font-normal block">Scope 1 - <span
-                                class="text-2xl font-light ">Direct Emissions</span> </span>
-
+                    <span class="text-2xl line-height-3 font-normal block">Scope 1 - <span
+                        class="text-2xl font-light ">Direct Emissions</span> </span>
+                        
                     </div>
-                </div>
+                    </div>
                 <hr>
-                <div class="field mb-0 mt-4 mb-5">
+                <div class="field mb-0 mt-4 mb-8">
                     <div class="mt-5">
                         <!-- <div class="-mb-3">
                             <h6>tCo2</h6>
                         </div>
                         <p-chart type="bar" [data]="scope1" [options]="scope1Options"></p-chart> -->
                         <div id="chart">
-                            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
-                                [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
-                                [yaxis]="chartOptions.yaxis" [legend]="chartOptions.legend" [fill]="chartOptions.fill"
-                                [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
-                                [xaxis]="chartOptions.xaxis"></apx-chart>
-                        </div>
+                            <apx-chart
+                              [series]="chartOptions.series"
+                              [chart]="chartOptions.chart"
+                              [dataLabels]="chartOptions.dataLabels"
+                              [plotOptions]="chartOptions.plotOptions"
+                              [yaxis]="chartOptions.yaxis"
+                              [legend]="chartOptions.legend"
+                              [fill]="chartOptions.fill"
+                              [stroke]="chartOptions.stroke"
+                              [tooltip]="chartOptions.tooltip"
+                              [xaxis]="chartOptions.xaxis"   
+                            ></apx-chart>
+                          </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-12 md:col-4 py-1">
             <div class="card">
 
@@ -163,193 +169,67 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-12 md:col-6 -mt-3 ">
-            <div class="card">
-
-                <!-- <h4>Scope 2 </h4>
-                <p>(Indirect Emission)</p> -->
-                <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
-                    <div class="ml-3 mb-2 md:mb-0">
-                        <span class="text-2xl line-height-3 font-normal block">Scope 2 - <span
-                                class="text-2xl font-light ">Indirect Emissions</span> </span>
-
-                    </div>
-                </div>
-                <hr>
-                <div class="field mb-0 mt-4 mb-8">
-                    <div class="mt-5">
-                        <div class="-mb-3">
-                            <h6>tCo2</h6>
-                        </div>
-
-                        <p-chart type="bar" [data]="scope2" [options]="scope2Options"></p-chart>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="p-fluid grid mt-4">
-
-        <div class="col-12 md:col-12 py-1">
-            <div class="card">
-                <div class="header-left-section flex align-items-center justify-content-start mb-3 md:mb-0">
-                    <div class="ml-3 mb-2 md:mb-0">
-                        <span class="text-2xl line-height-3 font-normal block">Scope 3 - <span
-                                class="text-2xl font-light ">Indirect Emissions</span> </span>
-
-                    </div>
-                </div>
-                <hr>
-                <div class="field mb-0 ">
-                    <div class="-mb-3">
-                        <h6>tCo2</h6>
-                    </div>
-                    <p-chart type="bar" [data]="scope3" [options]="scope3Options"></p-chart>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="col-12 md:col-12 -mt-3 ">
-            <div class="card">
-                <h4>Top Emission by Type</h4>
-                <hr>
-                <div class="col-4 flex justify-content-center">
-                <div class="field mb-0 p-5">
-                    <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '30%'}"></p-chart>
     
-                </div>
-           
-                </div>
-            </div>
-        </div> -->
+    
+    </div>
+    
+</div>
+</div>
+    
+<p-dialog [header]="'Scope 1 ('+selectedYear+')'" [(visible)]="showScope1" [modal]="true" [style]="{width: '50vw'}"
+[draggable]="false" [resizable]="false">
+
+<div class="mt-5">
+    <div class="-mb-3">
+        <h6>tCo2</h6>
     </div>
 
-
-    <div class="layout-dashboard">
-        <h4>Scope Reports</h4>
-        <div class="grid">
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-1 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-users text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block  ">Total | Scope 1,2 & 3</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#035388'}">900</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/users'+ '.svg'" class="w-full md:absolute md:bottom-0"
-                        alt="users">
-                </div>
-            </div>
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-2 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-shield text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block ">Company | Scope 1 & 2</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#CB6E17'}">200</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/locations' + '.svg'"
-                        class="w-full md:absolute md:bottom-0" alt="users">
-                </div>
-            </div>
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-3 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-dollar text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block white-space-nowrap overflow-hidden">Resource | Scope </span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#147D64'}">8560</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/rate' + '.svg'" class="w-full md:absolute md:bottom-0"
-                        alt="users">
-                </div>
-            </div>
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-4 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-comments text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block">Scope 3</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#6551B7'}">650</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/interactions' + '.svg'"
-                        class="w-full md:absolute md:bottom-0" alt="users">
-                </div>
-            </div>
-
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-2 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-map text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block ">Co2 Footprint calculator</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#CB6E17'}">880</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/locations' + '.svg'"
-                        class="w-full md:absolute md:bottom-0" alt="users">
-                </div>
-            </div>
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-3 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-directions text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block white-space-nowrap overflow-hidden">Life Cycle Analysis</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#147D64'}">10</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/rate' + '.svg'" class="w-full md:absolute md:bottom-0"
-                        alt="users">
-                </div>
-            </div>
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-1 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-users text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block  ">Co2 Emission reduction</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#035388'}">900</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/users'+ '.svg'" class="w-full md:absolute md:bottom-0"
-                        alt="users">
-                </div>
-            </div>
-            <div class="col-12 md:col-6 lg:col-3">
-                <div class="card p-0 widget-overview-box widget-overview-box-3 md:h-full md:relative">
-                    <div class="flex align-items-center justify-content-start pt-3 pb-2 px-4">
-                        <i class="pi pi-directions text-6xl"></i>
-                        <div class="pl-3 overflow-hidden">
-                            <span class="header block white-space-nowrap overflow-hidden">Scope 3 Indirect
-                                Emissions</span>
-                            <span class="block text-4xl font-bold" [style]="{'color':'#147D64'}">10</span>
-                        </div>
-                    </div>
-                    <img [src]="'assets/layout/images/dashboard/rate-dark' + '.svg'"
-                        class="w-full md:absolute md:bottom-0" alt="users">
-                </div>
-            </div>
-        </div>
-
-    </div>
-
+    <p-chart type="bar" [data]="scope1" [options]="scope1Options"></p-chart>
 </div>
 
 
+    <!-- <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template> -->
+</p-dialog>
+
+<p-dialog [header]="'Scope 2 ('+selectedYear+')'" [(visible)]="showScope2" [modal]="true" [style]="{width: '50vw'}"
+[draggable]="false" [resizable]="false">
+
+<div class="mt-5">
+    <div class="-mb-3">
+        <h6>tCo2</h6>
+    </div>
+
+    <p-chart type="bar" [data]="scope2" [options]="scope2Options"></p-chart>
+</div>
 
 
+    <!-- <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template> -->
+</p-dialog>
 
-<!-- <div class="grid">
+<p-dialog [header]="'Scope 3 ('+selectedYear+')'" [(visible)]="showScope3" [modal]="true" [style]="{width: '80vw'}"
+[draggable]="false" [resizable]="false">
+
+<div class="mt-5">
+    <div class="-mb-3">
+        <h6>tCo2</h6>
+    </div>
+
+    <p-chart type="bar" [data]="scope3" [options]="scope3Options"></p-chart>
+</div>
+
+
+    <!-- <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template> -->
+</p-dialog>
+    
+    
+    
+    <!-- <div class="grid">
             <div class="col-12">
                 <div class="card">
     
@@ -358,4 +238,4 @@
     
             </div>
         </div> -->
-<!-- </div> -->
+    <!-- </div> -->

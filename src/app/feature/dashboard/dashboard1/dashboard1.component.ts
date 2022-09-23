@@ -2,12 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DateService } from 'src/app/shared/services/date.service';
 import {
-    ApexNonAxisChartSeries,
-    ApexResponsive,
-  
-
-} from "ng-apexcharts";
-import {
     ApexAxisChartSeries,
     ApexChart,
     ChartComponent,
@@ -19,10 +13,10 @@ import {
     ApexXAxis,
     ApexFill,
     ApexTooltip
-} from "ng-apexcharts";
+  } from "ng-apexcharts";
+  import {ApexNonAxisChartSeries,ApexResponsive,} from "ng-apexcharts";
 
-
-export type ChartOptions = {
+  export type ChartOptions = {
     series: ApexAxisChartSeries;
     chart: ApexChart;
     dataLabels: ApexDataLabels;
@@ -33,10 +27,10 @@ export type ChartOptions = {
     tooltip: ApexTooltip;
     stroke: ApexStroke;
     legend: ApexLegend;
-  
+    
+  };
 
-};
-export type ChartOptions1 = {
+  export type ChartOptions1 = {
     series: ApexNonAxisChartSeries;
     chart: ApexChart;
     responsive: ApexResponsive[];
@@ -54,11 +48,10 @@ export type ChartOptions1 = {
 export class Dashboard1Component implements OnInit {
     @ViewChild("chart") chart: ChartComponent;
     public chartOptions: Partial<ChartOptions>;
+
     @ViewChild("chart1") chart1: ChartComponent;
     public chartOptions1: Partial<ChartOptions1>;
-   
     
-
 
     fromDate = undefined;
     toDate = undefined;
@@ -72,15 +65,24 @@ export class Dashboard1Component implements OnInit {
     subscription: Subscription;
 
     scope1: any;
-    scope1Options: any;
+    scope1Options:any;
 
     scope2: any;
-    scope2Options: any;
+    scope2Options:any;
 
     scope3: any;
-    scope3Options: any;
+    scope3Options:any;
 
-    card1Counter = 100;
+    card1Counter=0;
+    card2Counter=200;
+    card3Counter=300;
+    card4Counter=600;
+
+    showScope1:boolean=false;
+    showScope2:boolean=false;
+    showScope3:boolean=false;
+
+    selectedYear;
 
 
     marketingData;
@@ -92,15 +94,15 @@ export class Dashboard1Component implements OnInit {
 
     ];
     periods = [
-        '2018', '2019', '2020', '2021', '2022',
+       '2018', '2019', '2020', '2021', '2022',
     ];
 
-    categories = [
+    categories=[
         'Vehicle', 'Building', 'Electrical', 'Goods & Supply'
     ]
 
     selectedOrganization;
-    selectedPeriod;
+    selectedPeriod='2022';
     selectedCategory;
     selectedRecievedDate;
     configService: any;
@@ -237,124 +239,15 @@ export class Dashboard1Component implements OnInit {
     // scope2Options: { plugins: { legend: { labels: { color: string; }; }; }; scales: { x: { ticks: { color: string; }; grid: { color: string; }; }; y: { ticks: { color: string; callback: (label: any, index: any, labels: any) => string; }; grid: { color: string; }; }; }; };
 
 
+    
 
 
     constructor(private dateService: DateService) { }
 
     ngOnInit(): void {
 
-        this.getCard1Counter();
-
-        this.selectedOrganization = localStorage.getItem('facilityName');
-
-        if (this.selectedOrganization === 'Schertz') {
-            // this.stackedData = this.schertzBarData;
-            // this.data = this.schertzPieData
-        }
-        else {
-            // this.stackedData = this.florenceBarData;
-            // this.data = this.florencePieData;
-        }
-
-        this.chartOptions = {
-            series: [
-                {
-                    name: "Scope 1",
-                    data: [44, 55, 57, 87, 14],
-                    color: '#1d352b'
-
-                },
-                {
-                    name: "Scope 2",
-                    data: [76, 85, 101, 102, 44],
-                    color: '#315e3f'
-                },
-                {
-                    name: "Scope 3",
-                    data: [35, 41, 36, 110, 90],
-                    color: '#4c8554'
-                },
-
-
-            ],
-            chart: {
-                type: "bar",
-                height: 350,
-                events: {
-                    click: function (event, chartContext, config) {
-                        console.log(config);
-                        // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
-                        // console.log(config.config.series[config.seriesIndex])
-                        // console.log(config.config.series[config.seriesIndex].name)
-                        // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex]);
-
-                        if (config.config.series[config.seriesIndex].name === undefined) {
-                            return;
-                        }
-                        else if (config.config.series[config.seriesIndex].name === 'Net Profit') {
-                            alert('Net Profit Selected');
-                        }
-                        else if (config.config.series[config.seriesIndex].name === 'Revenue') {
-                            alert('Revenue Selected');
-                        }
-                        else if (config.config.series[config.seriesIndex].name === 'Free Cash Flow') {
-                            alert('Free Cash Flow Selected');
-                        }
-                    }
-                }
-            },
-            legend: {
-                show: true,
-                position: 'top',
-                floating: true,
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: "55%",
-                }
-            },
-            dataLabels: {
-                enabled: false,
-                // style: {
-                //   colors: ['#1d352b', '#315e3f', '#4c8554']
-                // }
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['#1d352b', '#315e3f', '#4c8554']
-            },
-            xaxis: {
-                categories: [
-                    "2018",
-                    "2019",
-                    "2020",
-                    "2021",
-                    "2022"
-                ]
-            },
-            yaxis: {
-                title: {
-                    text: " (tCO2)"
-                }
-            },
-            fill: {
-                opacity: 1,
-                colors: ['#1d352b', '#315e3f', '#4c8554',]
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return " " + val + " tCO2";
-                    }
-                }
-            }
-        };
-
-
         this.chartOptions1 = {
-            series: [44 , 55,10, 50,67],
+            series: [44 , 55,20, 40,67],
             // colors: [ ],
          chart: {
               width: 380,            
@@ -382,8 +275,27 @@ export class Dashboard1Component implements OnInit {
                  
                 }
             ],
-            
         };
+
+
+        this.getChartOptions();
+
+        this.getCard1Counter(400);
+
+        
+
+        this.selectedOrganization = localStorage.getItem('facilityName');
+
+        if (this.selectedOrganization === 'Schertz') {
+            // this.stackedData = this.schertzBarData;
+            // this.data = this.schertzPieData
+        }
+        else {
+            // this.stackedData = this.florenceBarData;
+            // this.data = this.florencePieData;
+        }
+
+        
 
 
         this.scope1 = {
@@ -398,7 +310,7 @@ export class Dashboard1Component implements OnInit {
 
             ]
         };
-        this.scope1Options = {
+        this.scope1Options =  {
             plugins: {
                 legend: {
                     labels: {
@@ -440,7 +352,7 @@ export class Dashboard1Component implements OnInit {
 
             ]
         };
-        this.scope2Options = {
+        this.scope2Options =  {
             plugins: {
                 legend: {
                     labels: {
@@ -473,8 +385,8 @@ export class Dashboard1Component implements OnInit {
 
         this.scope3 = {
             labels: ['Inhalers', 'Water', 'Waste', 'Business Travel', 'Energy well-to-tank', ' Medical Devices',
-                'Medivines', 'Fright Transport', 'Business Service', 'Food Service', 'Construction', 'Contracted Health Service'
-                , 'Manufacturing ', 'ICT', 'Staff Commuting'],
+                     'Medivines', 'Fright Transport', 'Business Service', 'Food Service', 'Construction', 'Contracted Health Service'
+                     , 'Manufacturing ', 'ICT', 'Staff Commuting'],
             datasets: [
                 {
                     type: 'bar',
@@ -488,7 +400,7 @@ export class Dashboard1Component implements OnInit {
             ]
         };
 
-        this.scope3Options = {
+        this. scope3Options =  {
             plugins: {
                 legend: {
                     labels: {
@@ -517,7 +429,7 @@ export class Dashboard1Component implements OnInit {
                         labelString: '% Cases/Status',
                         fontColor: '#757575',
                         fontSize: 12
-                    },
+                      },
                     grid: {
                         color: '#fff'
                     }
@@ -525,7 +437,7 @@ export class Dashboard1Component implements OnInit {
             }
         };
 
-
+       
 
         this.stackedOptions = {
             title: {
@@ -540,6 +452,121 @@ export class Dashboard1Component implements OnInit {
 
 
 
+    }
+
+    getChartOptions()
+    {
+        this.chartOptions = {
+            series: [
+              {
+                name: "Scope 1",
+                data: [44, 55, 57,87,14 ],
+                color: '#1d352b'
+              
+              },
+              {
+                name: "Scope 2",
+                data: [76, 85, 101, 102,44],
+                color:  '#315e3f'
+              },
+              {
+                name: "Scope 3",
+                data: [35, 41, 36,110,90 ],
+                color:  '#4c8554'
+              },
+           
+             
+            ],
+            chart: {
+              type: "bar",
+              height: 350,
+              events:{
+                click:(event, chartContext,config)=>
+                {
+                //   console.log(config);
+                //   console.log(chartContext);
+                //   console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
+                //   console.log(config.config.series[config.seriesIndex])
+                //   console.log(config.config.series[config.seriesIndex].name);
+                //   console.log();
+                //   console.log(config.config.xaxis.categories[config.dataPointIndex]);
+    
+                  let scopeType=config.config.series[config.seriesIndex].name;
+                  let scopeValue=config.config.series[config.seriesIndex].data[config.dataPointIndex];
+                  let scopeYear=config.config.xaxis.categories[config.dataPointIndex];
+
+                  this.selectedYear=scopeYear;
+    
+      
+                  if(scopeType === 'Scope 1')
+                  {
+                    this.showScope1=true;
+                    
+                  }
+                  else if(scopeType === 'Scope 2')
+                  {
+                    this.showScope2=true;
+                  }
+                  else if(scopeType === 'Scope 3')
+                  {
+                    this.showScope3=true;
+                  }
+                  else
+                  {
+                    return;
+                  }
+                  
+                }
+              }
+            },
+            legend: {
+              show:true,
+              position: 'top',
+              floating: true,
+            },
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: "55%",
+              }
+            },
+            dataLabels: {
+              enabled: false,
+              // style: {
+              //   colors: ['#1d352b', '#315e3f', '#4c8554']
+              // }
+            },
+            stroke: {
+              show: true,
+              width: 2,
+              colors: ['#1d352b', '#315e3f', '#4c8554']
+            },
+            xaxis: {
+              categories: [
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022"
+              ]
+            },
+            yaxis: {
+              title: {
+                text: " (tCO2)"
+              }
+            },
+            fill: {
+              opacity: 1,
+              colors: ['#1d352b', '#315e3f', '#4c8554',]
+            },
+            tooltip: {
+              y: {
+                formatter: function(val) {
+                  return " " + val + " tCO2";
+                }
+              }
+            }
+          };
     }
     // updateChartOptions() {
     //     this.chartOptions = this.config && this.config.dark ? this.getDarkTheme() : this.getLightTheme();
@@ -569,19 +596,75 @@ export class Dashboard1Component implements OnInit {
     }
 
 
-    getCard1Counter() {
-
-        const interval = setInterval(() => {
-            if (this.card1Counter >= 899) { clearInterval(interval) }
-            this.card1Counter++;
-        }, 1);
-
+    getCard1Counter(count)
+    {
+        this.card1Counter=0;
+       const interval = setInterval(() => {
+          if(this.card1Counter=count-1)
+          {clearInterval(interval)}
+          this.card1Counter++;
+        }, 100);
+        
+      
+    }
+    
+    onFacilitySelection(event)
+    {
+        localStorage.setItem('facilityName',event.value)
 
     }
 
-    onFacilitySelection(event) {
-        localStorage.setItem('facilityName', event.value)
 
+    onPeriodChange(event)
+    {
+        
+        let currentYear=event.value;
+        
+        if(currentYear==='2018')
+        { 
+            
+
+            this.getCard1Counter(800);
+
+            // this.card1Counter=800;
+            this.card2Counter=700;
+            this.card3Counter=600;
+            this.card4Counter=500;
+        }
+        else if(currentYear==='2019')
+        {
+            this.card1Counter=700;
+            this.card2Counter=600;
+            this.card3Counter=500;
+            this.card4Counter=400;
+        }
+        else if(currentYear==='2020')
+        {
+            this.card1Counter=400;
+            this.card2Counter=300;
+            this.card3Counter=350;
+            this.card4Counter=400;
+        }
+        else if(currentYear==='2021')
+        {
+            this.card1Counter=700;
+            this.card2Counter=800;
+            this.card3Counter=650;
+            this.card4Counter=400;
+        }
+        else if(currentYear==='2022')
+        {
+            this.card1Counter=400;
+            this.card2Counter=200;
+            this.card3Counter=300;
+            this.card4Counter=600;
+        }
+    }
+
+
+    showScopeOne()
+    {
+        alert('function');
     }
 
 

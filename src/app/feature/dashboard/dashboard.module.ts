@@ -13,6 +13,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import { MarketingDashboardComponent } from './marketing-dashboard/marketing-dashboard.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
     FieldsetModule,
     DropdownModule,
     CalendarModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    DialogModule
   ]
 })
 export class DashboardModule { }
