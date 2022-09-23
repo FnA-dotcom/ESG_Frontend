@@ -1,6 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DateService } from 'src/app/shared/services/date.service';
+import {
+    ApexAxisChartSeries,
+    ApexChart,
+    ChartComponent,
+    ApexDataLabels,
+    ApexPlotOptions,
+    ApexYAxis,
+    ApexLegend,
+    ApexStroke,
+    ApexXAxis,
+    ApexFill,
+    ApexTooltip
+  } from "ng-apexcharts";
+
+  export type ChartOptions = {
+    series: ApexAxisChartSeries;
+    chart: ApexChart;
+    dataLabels: ApexDataLabels;
+    plotOptions: ApexPlotOptions;
+    yaxis: ApexYAxis;
+    xaxis: ApexXAxis;
+    fill: ApexFill;
+    tooltip: ApexTooltip;
+    stroke: ApexStroke;
+    legend: ApexLegend;
+    
+  };
 
 @Component({
     selector: 'app-dashboard1',
@@ -8,6 +35,9 @@ import { DateService } from 'src/app/shared/services/date.service';
     styleUrls: ['./dashboard1.component.scss']
 })
 export class Dashboard1Component implements OnInit {
+    @ViewChild("chart") chart: ChartComponent;
+    public chartOptions: Partial<ChartOptions>;
+    
 
     fromDate = undefined;
     toDate = undefined;
@@ -16,7 +46,7 @@ export class Dashboard1Component implements OnInit {
     stackedOptions: any;
 
     data: any;
-    chartOptions: any;
+    // chartOptions: any;
 
     subscription: Subscription;
 
@@ -205,6 +235,107 @@ export class Dashboard1Component implements OnInit {
             // this.data = this.florencePieData;
         }
 
+        this.chartOptions = {
+            series: [
+              {
+                name: "Scope 1",
+                data: [44, 55, 57,87,14 ],
+                color: '#1d352b'
+              
+              },
+              {
+                name: "Scope 2",
+                data: [76, 85, 101, 102,44],
+                color:  '#315e3f'
+              },
+              {
+                name: "Scope 3",
+                data: [35, 41, 36,110,90 ],
+                color:  '#4c8554'
+              },
+           
+             
+            ],
+            chart: {
+              type: "bar",
+              height: 350,
+              events:{
+                click:function(event, chartContext,config)
+                {
+                  console.log(config);
+                  // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
+                  // console.log(config.config.series[config.seriesIndex])
+                  // console.log(config.config.series[config.seriesIndex].name)
+                  // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex]);
+      
+                  if(config.config.series[config.seriesIndex].name === undefined)
+                  {
+                    return;
+                  }
+                  else if(config.config.series[config.seriesIndex].name === 'Net Profit')
+                  {
+                    alert('Net Profit Selected');
+                  }
+                  else if(config.config.series[config.seriesIndex].name === 'Revenue')
+                  {
+                    alert('Revenue Selected');
+                  }
+                  else if(config.config.series[config.seriesIndex].name === 'Free Cash Flow')
+                  {
+                    alert('Free Cash Flow Selected');
+                  }
+                }
+              }
+            },
+            legend: {
+              show:true,
+              position: 'top',
+              floating: true,
+            },
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: "55%",
+              }
+            },
+            dataLabels: {
+              enabled: false,
+              // style: {
+              //   colors: ['#1d352b', '#315e3f', '#4c8554']
+              // }
+            },
+            stroke: {
+              show: true,
+              width: 2,
+              colors: ['#1d352b', '#315e3f', '#4c8554']
+            },
+            xaxis: {
+              categories: [
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022"
+              ]
+            },
+            yaxis: {
+              title: {
+                text: " (tCO2)"
+              }
+            },
+            fill: {
+              opacity: 1,
+              colors: ['#1d352b', '#315e3f', '#4c8554',]
+            },
+            tooltip: {
+              y: {
+                formatter: function(val) {
+                  return " " + val + " tCO2";
+                }
+              }
+            }
+          };
+
 
         this.scope1 = {
             labels: ['Fossil Fuels', 'Medical Facilities', 'Anesthtics', 'Fleet & Leased Vehicles'],
@@ -361,9 +492,9 @@ export class Dashboard1Component implements OnInit {
 
 
     }
-    updateChartOptions() {
-        this.chartOptions = this.config && this.config.dark ? this.getDarkTheme() : this.getLightTheme();
-    }
+    // updateChartOptions() {
+    //     this.chartOptions = this.config && this.config.dark ? this.getDarkTheme() : this.getLightTheme();
+    // }
     getLightTheme() {
         return {
             plugins: {
