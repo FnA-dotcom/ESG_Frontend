@@ -15,7 +15,7 @@ export class Dashboard2Component implements OnInit {
 
   overviewChart;
 
-
+  scope1:any;
 
   ptVisistsPerMonthData;
   ptVisistsPerMonthDataOptions;
@@ -30,7 +30,7 @@ export class Dashboard2Component implements OnInit {
   
 
   schertzStackedData={
-    labels: ['RI 1', 'RI 2', 'RI 3', 'RI 4', 'RI 5', 'RI 6'],
+    labels: ['RI 1', 'RI 2', 'RI 3', 'RI 4', ],
     datasets: [{
         type: 'bar',
         label: 'RI 1',
@@ -45,21 +45,7 @@ export class Dashboard2Component implements OnInit {
             42
         ]
     },
-     {
-        type: 'bar',
-        label: 'RI 2',
-        backgroundColor: '#d4af30',
-        data: [
-            21,
-            84,
-            24,
-            75,
-            37,
-            65,
-            34
-        ]
-
-    }, 
+    
      {
         type: 'bar',
         label: 'RI 3',
@@ -75,35 +61,7 @@ export class Dashboard2Component implements OnInit {
         ]
 
     }, 
-     {
-        type: 'bar',
-        label: 'RI 4',
-        backgroundColor: '#94a651',
-        data: [
-            21,
-            84,
-            24,
-            75,
-            37,
-            65,
-            34
-        ]
-
-    }, 
-    {
-        type: 'bar',
-        label: 'RI 5',
-        backgroundColor: '#5c6630',
-        data: [
-            41,
-            52,
-            24,
-            74,
-            23,
-            21,
-            32
-        ]
-    }]
+     ]
 };
 
 floresvilleStackedData={
@@ -167,24 +125,11 @@ floresvilleStackedData={
       ]
 
   }, 
-  {
-      type: 'bar',
-      label: 'RI 5',
-      backgroundColor: '#5c6630',
-      data: [
-          82,
-          55,
-          48,
-          150,
-          46,
-          42,
-          65
-      ]
-  }]
+  ]
 };
 
 schertzPieData={
-  labels: ['S1','S2','S3'],
+  labels: ['S1','S2','scope'],
   datasets: [
       {
           data: [200, 50, 100],
@@ -203,19 +148,21 @@ schertzPieData={
 };
 
 floresvillePieData={
-  labels: ['S1','S2','S3'],
+  labels: ['Vehicles','Technology','Buildongs','Other',],
   datasets: [
       {
-          data: [100, 200, 150],
+          data: [100, 200, 150, 100,],
           backgroundColor: [
-              "#e63a47",
-              "#FFCE56",
-              "#21332a",
+              "#a0b588",
+              "#315e3f",
+              "#2e3432",
+              "#dad8cd",
           ],
           hoverBackgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#3a5b41"
+              "#4c8554",
+              "#1d352b",
+              "#141615",
+              "#dad8cd",
           ]
       }
   ]
@@ -324,7 +271,18 @@ floresvilleVisitPerMonth={
     }
 };
 
+this.scope1 = {
+  labels: ['RI 1','RI 2', 'RI 3', 'RI $'],
+  datasets: [
+      {
+          type: 'bar',
+          label: ['Report',],
+          backgroundColor: ['#141615', '#1d352b', '#4C8554', '#A0B588'],
+          data: [85, 52, 78, 100,]
+      },
 
+  ]
+};
 
 
     this.overviewChart = {

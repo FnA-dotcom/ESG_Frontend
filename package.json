@@ -39,6 +39,7 @@
         "jspdf-autotable": "^3.5.25",
         "jszip": "^3.10.1",
         "moment": "^2.29.4",
+        "ng-apexcharts": "^1.7.1",
         "ngrx-store-freeze": "^0.2.4",
         "ngx-csv": "^0.3.2",
         "ngx-doc-viewer": "^2.1.2",
