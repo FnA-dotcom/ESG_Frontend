@@ -37,10 +37,31 @@
           [colors]="chartOptions.color">
         ></apx-chart>
       </div>
+      <div class="flex justify-content-center">
+
+        <h6>(tCo2)</h6>
+
+    </div>
 
 
-<p-dialog position="top" [header]="innerModalHeader + ' | Actual/Target Emissions'" [(visible)]="showModal" [modal]="true" [style]="{width: '90vw',height:'90vh'}"
+<p-dialog position="top" [header]="innerModalHeader + ' | Actual/Target Emissions  '" [(visible)]="showModal" [modal]="true" [style]="{width: '90vw',height:'90vh'}"
 [draggable]="false" [resizable]="false">
+
+<div class="grid">
+    <div class="col-12">
+        <div style="display: flex;justify-content:space-between">
+            <div class="field mb-0">
+                <span class="p-float-label">
+                    <p-dropdown appendTo="body" inputId="dropdown" [style]="{width: '200px'}" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
+                        [(ngModel)]="selectedPeriod"></p-dropdown>
+                    <label for="dropdown">Period</label>
+                </span>
+            </div>
+
+            <h5>Facility: {{selectedOrganization}}</h5>
+        </div>
+    </div>
+</div>
 
 <div class="grid">
     <div class="col-12 md:col-4">
@@ -53,13 +74,7 @@
         <div style="display: flex;justify-content:space-between">
         <h4>Scope 3</h4>
 
-        <div class="field mb-0">
-            <span class="p-float-label">
-                <p-dropdown appendTo="body" inputId="dropdown" [style]="{width: '200px'}" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
-                    [(ngModel)]="innerSelectedPeriod"></p-dropdown>
-                <label for="dropdown">Period</label>
-            </span>
-        </div>
+        
 
     </div>
 
@@ -98,8 +113,8 @@
                 <div class="ml-3 mb-2 md:mb-0">
                     <span class="text-3xl line-height-3 font-light">Actual</span>
                     <br>
-                    <span class="text-3xl font-normal">800 </span>
-                    <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                    <span class="text-3xl font-normal">850 </span>
+                    <span class="subtext"><strong style="color: red;">-18%</strong> than last week</span>
                 </div>
             </div>
         </div>
@@ -122,7 +137,7 @@
                 <div class="ml-3 mb-2 md:mb-0">
                     <span class="text-3xl line-height-3 font-light">Target</span>
                     <br>
-                    <span class="text-3xl font-normal">550 </span>
+                    <span class="text-3xl font-normal">800 </span>
                     <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
                 </div>
             </div>
