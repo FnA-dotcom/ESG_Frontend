@@ -73,7 +73,10 @@ export class Dashboard1Component implements OnInit {
     scope3: any;
     scope3Options:any;
 
-    card1Counter=100;
+    card1Counter=0;
+    card2Counter=200;
+    card3Counter=300;
+    card4Counter=600;
 
     showScope1:boolean=false;
     showScope2:boolean=false;
@@ -99,7 +102,7 @@ export class Dashboard1Component implements OnInit {
     ]
 
     selectedOrganization;
-    selectedPeriod;
+    selectedPeriod='2022';
     selectedCategory;
     selectedRecievedDate;
     configService: any;
@@ -244,7 +247,7 @@ export class Dashboard1Component implements OnInit {
     ngOnInit(): void {
 
         this.chartOptions1 = {
-            series: [44 , 55,10, 50,67],
+            series: [44 , 55,20, 40,67],
             // colors: [ ],
          chart: {
               width: 380,            
@@ -277,7 +280,9 @@ export class Dashboard1Component implements OnInit {
 
         this.getChartOptions();
 
-        this.getCard1Counter();
+        this.getCard1Counter(400);
+
+        
 
         this.selectedOrganization = localStorage.getItem('facilityName');
 
@@ -591,14 +596,14 @@ export class Dashboard1Component implements OnInit {
     }
 
 
-    getCard1Counter()
+    getCard1Counter(count)
     {
-      
+        this.card1Counter=0;
        const interval = setInterval(() => {
-          if(this.card1Counter>=899)
+          if(this.card1Counter=count-1)
           {clearInterval(interval)}
           this.card1Counter++;
-        }, 1);
+        }, 100);
         
       
     }
@@ -607,6 +612,53 @@ export class Dashboard1Component implements OnInit {
     {
         localStorage.setItem('facilityName',event.value)
 
+    }
+
+
+    onPeriodChange(event)
+    {
+        
+        let currentYear=event.value;
+        
+        if(currentYear==='2018')
+        { 
+            
+
+            this.getCard1Counter(800);
+
+            // this.card1Counter=800;
+            this.card2Counter=700;
+            this.card3Counter=600;
+            this.card4Counter=500;
+        }
+        else if(currentYear==='2019')
+        {
+            this.card1Counter=700;
+            this.card2Counter=600;
+            this.card3Counter=500;
+            this.card4Counter=400;
+        }
+        else if(currentYear==='2020')
+        {
+            this.card1Counter=400;
+            this.card2Counter=300;
+            this.card3Counter=350;
+            this.card4Counter=400;
+        }
+        else if(currentYear==='2021')
+        {
+            this.card1Counter=700;
+            this.card2Counter=800;
+            this.card3Counter=650;
+            this.card4Counter=400;
+        }
+        else if(currentYear==='2022')
+        {
+            this.card1Counter=400;
+            this.card2Counter=200;
+            this.card3Counter=300;
+            this.card4Counter=600;
+        }
     }
 
 

@@ -16,7 +16,7 @@
             <div class="col-12 md:col-2 py-1">
                 <div class="field mb-0">
                     <span class="p-float-label">
-                        <p-dropdown appendTo="body" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
+                        <p-dropdown appendTo="body" (onChange)="onPeriodChange($event)" inputId="dropdown" class="p-inputtext-sm" [autoDisplayFirst]="false" [options]="periods"
                             [(ngModel)]="selectedPeriod"></p-dropdown>
                         <label for="dropdown">Period</label>
                     </span>
@@ -43,8 +43,8 @@
                         <div class="ml-3 mb-2 md:mb-0">
                         <span class="text-3xl line-height-3 font-light">Scope 1</span>
                         <br>
-                        <span class="text-3xl font-normal">{{card1Counter}} </span>
-                        <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                        <span class="text-3xl font-normal">{{card1Counter}} </span> <sup>(tCO2) </sup>
+                        <span class="subtext"><strong style="color: green;">&nbsp;&nbsp; +9%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                         <div class="ml-3 mb-2 md:mb-0">
                             <span class="text-3xl line-height-3 font-light">Scope 2</span>
                             <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                            <span class="text-3xl font-normal">{{card2Counter}} </span> <sup>(tCO2) </sup>
+                            <span class="subtext"><strong style="color: green;">&nbsp;&nbsp; +9%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
                         <div class="ml-3 mb-2 md:mb-0">
                             <span class="text-3xl line-height-3 font-light">Scope 3  </span><span class="subtext"><i>(Upstream)</i></span>
                             <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                            <span class="text-3xl font-normal">{{card3Counter}} </span> <sup>(tCO2) </sup>
+                            <span class="subtext"><strong style="color: green;">&nbsp;&nbsp; +9%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -79,8 +79,8 @@
                         <div class="ml-3 mb-2 md:mb-0">
                             <span class="text-3xl line-height-3 font-light">Scope 3  </span><span class="subtext"><i>(Downstream)</i></span>
                             <br>
-                            <span class="text-3xl font-normal">{{card1Counter}} </span>
-                            <span class="subtext"><strong style="color: green;">+9%</strong> than last week</span>
+                            <span class="text-3xl font-normal">{{card4Counter}} </span> <sup>(tCO2) </sup>
+                            <span class="subtext"><strong style="color: red;">&nbsp;&nbsp; -15%</strong> than last week</span>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
 
     
     
-    </div>
+ 
     
     
     
@@ -102,7 +102,7 @@
             <div class="card">
                 <!-- <div class="flex flex-wrap align-items-start justify-content-around"> -->
                 <!-- <div>
-                    <h4>Scope 1</h4>
+                    <h4>Scope 1</h4>-
                 </div>
                 <div>
                     <h6>Direct Emission</h6>
@@ -172,7 +172,7 @@
     
     </div>
     
-    
+</div>
 </div>
     
 <p-dialog [header]="'Scope 1 ('+selectedYear+')'" [(visible)]="showScope1" [modal]="true" [style]="{width: '50vw'}"
