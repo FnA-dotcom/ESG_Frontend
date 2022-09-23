@@ -367,6 +367,17 @@ ftconfirmNewPassword(){
     }
   }
   
-    
+  fbOpen(){
+    window.open('https://www.facebook.com/minus2d', '_blank');
+  }
+  linkedOpen(){
+    window.open('https://www.linkedin.com/company/minus2d', '_blank');
+  }
+  instaOpen(){
+    window.open('http://www.instagram.com/minus2_degrees', '_blank');
+  }
+  twitterOpen(){
+    window.open('http://www.twitter.com/minus2_degrees', '_blank');
+  }
   }
 
