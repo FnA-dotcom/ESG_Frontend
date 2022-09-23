@@ -30,6 +30,7 @@
         "@ngrx/store": "^13.0.2",
         "@ngrx/store-devtools": "^13.0.2",
         "angular2-signaturepad": "^4.0.2",
+        "apexcharts": "^3.35.5",
         "bn-ng-idle": "^2.0.4",
         "chart.js": "^3.8.2",
         "doc-viewer-angular": "^1.0.8",

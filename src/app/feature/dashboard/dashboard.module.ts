@@ -12,6 +12,9 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import { MarketingDashboardComponent } from './marketing-dashboard/marketing-dashboard.component';
+import { NgApexchartsModule } from "ng-apexcharts";
+
+
 
 const routes: Routes = [
   {
@@ -45,7 +48,8 @@ const routes: Routes = [
     FormsModule,
     FieldsetModule,
     DropdownModule,
-    CalendarModule
+    CalendarModule,
+    NgApexchartsModule
   ]
 })
 export class DashboardModule { }
