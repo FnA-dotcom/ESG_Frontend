@@ -25,6 +25,7 @@ export type ChartOptions = {
   tooltip: ApexTooltip;
   stroke: ApexStroke;
   legend: ApexLegend;
+  
 };
 
 @Component({
@@ -67,17 +68,19 @@ export class MarketingDashboardComponent implements OnInit {
     this.chartOptions = {
       series: [
         {
-          name: "Net Profit",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+          name: "Scope 1",
+          data: [44, 55, 57, ],
+        
         },
         {
-          name: "Revenue",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+          name: "Scope 2",
+          data: [76, 85, 101, ]
         },
         {
-          name: "Free Cash Flow",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+          name: "Scope 3",
+          data: [35, 41, 36, ]
         }
+      
       ],
       chart: {
         type: "bar",
@@ -126,29 +129,25 @@ export class MarketingDashboardComponent implements OnInit {
       },
       xaxis: {
         categories: [
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct"
+          "S1",
+          "S2",
+          "S3",
         ]
       },
       yaxis: {
         title: {
-          text: "$ (thousands)"
+          text: " (tCO2)"
         }
       },
       fill: {
-        opacity: 1
+        opacity: 1,
+        colors: ['#1d352b', '#315e3f', '#4c8554']
+        
       },
       tooltip: {
         y: {
           formatter: function(val) {
-            return "$ " + val + " thousands";
+            return " " + val + " tCO2";
           }
         }
       }
