@@ -69,18 +69,22 @@ export class MarketingDashboardComponent implements OnInit {
       series: [
         {
           name: "Scope 1",
-          data: [44, 55, 57, ],
+          data: [44, 55, 57,87,14 ],
+          color: '#1d352b'
         
         },
         {
           name: "Scope 2",
-          data: [76, 85, 101, ]
+          data: [76, 85, 101, 102,44],
+          color:  '#315e3f'
         },
         {
           name: "Scope 3",
-          data: [35, 41, 36, ]
-        }
-      
+          data: [35, 41, 36,110,90 ],
+          color:  '#4c8554'
+        },
+     
+       
       ],
       chart: {
         type: "bar",
@@ -113,6 +117,11 @@ export class MarketingDashboardComponent implements OnInit {
           }
         }
       },
+      legend: {
+        show:true,
+        position: 'top',
+        floating: true,
+      },
       plotOptions: {
         bar: {
           horizontal: false,
@@ -120,18 +129,23 @@ export class MarketingDashboardComponent implements OnInit {
         }
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
+        // style: {
+        //   colors: ['#1d352b', '#315e3f', '#4c8554']
+        // }
       },
       stroke: {
         show: true,
         width: 2,
-        colors: ["transparent"]
+        colors: ['#1d352b', '#315e3f', '#4c8554']
       },
       xaxis: {
         categories: [
-          "S1",
-          "S2",
-          "S3",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
         ]
       },
       yaxis: {
@@ -141,8 +155,7 @@ export class MarketingDashboardComponent implements OnInit {
       },
       fill: {
         opacity: 1,
-        colors: ['#1d352b', '#315e3f', '#4c8554']
-        
+        colors: ['#1d352b', '#315e3f', '#4c8554',]
       },
       tooltip: {
         y: {
