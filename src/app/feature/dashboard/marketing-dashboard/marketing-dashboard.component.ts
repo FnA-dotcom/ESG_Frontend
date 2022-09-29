@@ -41,11 +41,11 @@ export class MarketingDashboardComponent implements OnInit {
 
     this.lineStylesData = {
 
-      labels: ['22 T', '24', '26', '32', '36', '40', '48', '54', '60', '65', '70', '75', '80', '85', '90',],
+      labels: ['2014 ', '2015 ', '2016 ', '2017 ', '2018 ', '2019 ', '2020 ', '2021 ', '2022 ', '2023 ', ],
       datasets: [
         {
           label: 'Carbon Rediction Tracking',
-          data: [65, 59, 76, 81, 56, 55, 40, 50, 40, 60, 45, 46, 86, 15, 56,],
+          data: [ 100, 90, 80, 70, 60, 50, 45,30,20,10],
           // data: [10, 20, 30, 40, 50, 60, 70,80,90,100],
           fill: true,
           borderColor: '#21332a',

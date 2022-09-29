@@ -294,8 +294,8 @@ floresvilleVisitPerMonth={
     this.chartOptions = {
       series: [
         {
-          name: "basic",
-          data: [150,450,300,400,100,150,350,450,250,280,380,150,180,290,192,285,366, ]
+          name: "",
+          data: [150,450,300,400,100,150,350,450,250,280,380,150,180,290,192,285, ]
    
        
         }
@@ -345,7 +345,7 @@ floresvilleVisitPerMonth={
           "Stationary",
           "Mobile ",
           "Fugitive",
-          "Netherlands",
+         
           "Process emissions",
           "Electricity",
           "Steam",
