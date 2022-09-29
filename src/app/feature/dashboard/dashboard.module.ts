@@ -13,7 +13,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {CalendarModule} from 'primeng/calendar';
 import { MarketingDashboardComponent } from './marketing-dashboard/marketing-dashboard.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-import { DialogModule } from 'primeng/dialog';
+import {DialogModule} from 'primeng/dialog';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -51,7 +52,8 @@ const routes: Routes = [
     DropdownModule,
     CalendarModule,
     NgApexchartsModule,
-    DialogModule
+    DialogModule,
+    FontAwesomeModule
   ]
 })
 export class DashboardModule { }

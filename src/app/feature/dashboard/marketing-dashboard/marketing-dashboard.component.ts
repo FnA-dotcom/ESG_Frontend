@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DateService } from 'src/app/shared/services/date.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faangular } from '@fortawesome/free-solid-svg-icons';
+
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -34,7 +37,10 @@ export type ChartOptions = {
   styleUrls: ['./marketing-dashboard.component.scss']
 })
 export class MarketingDashboardComponent implements OnInit {
-
+  faCoffee = faCoffee;
+  faangular= faangular;
+ 
+  
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
