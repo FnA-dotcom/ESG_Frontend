@@ -1,35 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DateService } from 'src/app/shared/services/date.service';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faangular } from '@fortawesome/free-solid-svg-icons';
+import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ChartComponent,
-  ApexDataLabels,
-  ApexPlotOptions,
-  ApexYAxis,
-  ApexLegend,
-  ApexStroke,
-  ApexXAxis,
-  ApexFill,
-  ApexTooltip
-} from "ng-apexcharts";
 
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
-  xaxis: ApexXAxis;
-  fill: ApexFill;
-  tooltip: ApexTooltip;
-  stroke: ApexStroke;
-  legend: ApexLegend;
-  
-};
+
+
+
+
+
 
 @Component({
   selector: 'app-marketing-dashboard',
@@ -38,273 +19,136 @@ export type ChartOptions = {
 })
 export class MarketingDashboardComponent implements OnInit {
   faCoffee = faCoffee;
-  faangular= faangular;
- 
-  
-  @ViewChild("chart") chart: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
+  filmIcon = faFilm;
+  fauser = faUser;
+  house = faHouse;
+  // ---- Chart-----
+  lineStylesData: any;
+  lineOptions: any;
+  basicOptions: any;
 
 
-  fromDate=undefined;
-  toDate=undefined;
-
-  marketingData;
-  marketingDataOptions;
-
-  recievedDates=[
-    'Today',
-    'Yesterday',
-    'This Week',
-    'This Month',
-    'This Year',
-    'Last Week',
-    'Last Month',
-    'Last Year',
-    'Last 7 Days',
-    'Last 30 Days',
-    'Last 60 Days',
-    'Last 90 Days',
-    'Last 12 Months',
-  ];
-
-  selectedRecievedDate;
+  // ------ canvas---------
+  multiAxisData: any;
+  multiAxisOptions: any;
 
 
-  constructor(private dateService:DateService) {
-    this.chartOptions = {
-      series: [
+
+  constructor(private dateService: DateService,) {
+  }
+
+  ngOnInit(): void {
+
+    this.lineStylesData = {
+
+      labels: ['22 T', '24', '26', '32', '36', '40', '48', '54', '60', '65', '70', '75', '80', '85', '90',],
+      datasets: [
         {
-          name: "Scope 1",
-          data: [44, 55, 57,87,14 ],
-          color: '#1d352b'
-        
-        },
-        {
-          name: "Scope 2",
-          data: [76, 85, 101, 102,44],
-          color:  '#315e3f'
-        },
-        {
-          name: "Scope 3",
-          data: [35, 41, 36,110,90 ],
-          color:  '#4c8554'
-        },
-     
-       
-      ],
-      chart: {
-        type: "bar",
-        height: 350,
-        events:{
-          click:function(event, chartContext,config)
-          {
-            console.log(config);
-            // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
-            // console.log(config.config.series[config.seriesIndex])
-            // console.log(config.config.series[config.seriesIndex].name)
-            // console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex]);
+          label: 'Carbon Rediction Tracking',
+          data: [65, 59, 76, 81, 56, 55, 40, 50, 40, 60, 45, 46, 86, 15, 56,],
+          // data: [10, 20, 30, 40, 50, 60, 70,80,90,100],
+          fill: true,
+          borderColor: '#21332a',
+          tension: .4,
+          // backgroundColor: 'rgb(249, 255, 230)'
+          backgroundColor: '#59815f98'
+          // backgroundColor: '#59815f98'
+        }
+      ]
 
-            if(config.config.series[config.seriesIndex].name === undefined)
-            {
-              return;
-            }
-            else if(config.config.series[config.seriesIndex].name === 'Net Profit')
-            {
-              alert('Net Profit Selected');
-            }
-            else if(config.config.series[config.seriesIndex].name === 'Revenue')
-            {
-              alert('Revenue Selected');
-            }
-            else if(config.config.series[config.seriesIndex].name === 'Free Cash Flow')
-            {
-              alert('Free Cash Flow Selected');
-            }
+    };
+    this.multiAxisData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+        label: 'Dataset 1',
+        fill: true,
+        borderColor: '#21332a',
+        yAxisID: 'y',
+        tension: .4,
+        backgroundColor: '#59815f98',
+        data: [65, 59, 80, 81, 56, 55, 10]
+
+      }]
+    };
+
+    this.multiAxisOptions = {
+      stacked: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#495057'
           }
         }
       },
-      legend: {
-        show:true,
-        position: 'top',
-        floating: true,
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-          columnWidth: "55%",
-        }
-      },
-      dataLabels: {
-        enabled: false,
-        // style: {
-        //   colors: ['#1d352b', '#315e3f', '#4c8554']
-        // }
-      },
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['#1d352b', '#315e3f', '#4c8554']
-      },
-      xaxis: {
-        categories: [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ]
-      },
-      yaxis: {
-        title: {
-          text: " (tCO2)"
-        }
-      },
-      fill: {
-        opacity: 1,
-        colors: ['#1d352b', '#315e3f', '#4c8554']
-      },
-      tooltip: {
+      scales: {
+        x: {
+          ticks: {
+            // callback: (label) => {
+            //   return label  + ' Time'; }
+
+
+          },
+          grid: {
+            color: '#ebedef'
+          }
+        },
         y: {
-          formatter: function(val) {
-            return " " + val + " tCO2";
+          type: 'linear',
+          display: true,
+          position: 'left',
+          ticks: {
+            color: '#495057'
+          },
+          scaleLabel: {
+            display: true,
+            labelString: '% Cases/Status',
+            fontColor: '#757575',
+            fontSize: 12
+          },
+          grid: {
+            color: '#ebedef'
+          }
+        },
+        y1:
+        {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          ticks: {
+            color: '#495057'
+          },
+          grid: {
+            drawOnChartArea: false,
+            color: '#ebedef'
           }
         }
       }
     };
-   }
-
-  ngOnInit(): void {
-    this.marketingData={
-      labels: [
-        'First Visit',
-        'Return Patient',
-        'Online Reviews',
-        'Facebook',
-        'Map Search',
-        'Google Search',
-        'VictoriaER.com',
-        'Website Ads',
-        'Online Ads',
-        'Twitter',
-        'LinkedIn',
-        'Email Blast',
-        'YouTube',
-        'TV',
-        'Billboard',
-        'Radio',
-        'Brochure',
-        'Direct Mail',
-        'Citizens/DeTar',
-        'Lives/Work Nearby',
-        'Family/Friend',
-        'Urgent Care',
-        'Newspaper/Magazine',
-        'School',
-        'Hotel',
-        ],
-      datasets: [
-          {   label:'Marketing Source',
-              data: [10025,2268,4792,687,499,3893,987,190,125,7,15,22,31,729,1116,271,52,32,255,1343,3828,312,32,51,17],
-              backgroundColor: [
-                  "#42A5F5",
-                  "#66BB6A",
-                  "#FFA726",
-                  '#EC407A',
-                  '#AB47BC',
-                  '#42A5F5',
-                  '#f5425a',
-                  '#66BB6A',
-                  '#FFCA28',
-                  '#26A69A',
-                  '#aa923b',
-                  '#154c79',
-                  '#83aab9',
-                  '#02e862',
-                  '#dc3545',
-                  "#FFB74D"
-              ],
-    
-          }
-      ]
+    this.lineOptions = {
+     plugins:{
+      datalabels:{
+        aling:'end',
+        anchor:'end',
+        borderRadius: 4,
+        backgroundColor: "teal",
+        color: 'white',
+        font:{
+          weight: 'bold'
+        }
+      }
+     },
+      title: {
+        display: true,
+        text: 'dfksdjfkjdskfjdsfklsd',
+        fontSize: 50
+      },
+      legend: {
+        position: 'bottom'
+      }
     };
-  }
-
-  onDateRangeSelect(event)
-  {
-    let val=event.value;
-
-    let dates:{from:Date,to:Date}=this.dateService.dateFilter(val);
-    this.fromDate=dates.from;
-    this.toDate=dates.to;
-    
-
 
   }
 
 
-  applyFilter()
-  {
-    if(this.fromDate === undefined || this.toDate === undefined)
-    {
-      alert('Please Select To/From Dates');
-    }
-    else
-    {
-      this.marketingData={
-        labels: [
-          'First Visit',
-          'Return Patient',
-          'Online Reviews',
-          'Facebook',
-          'Map Search',
-          'Google Search',
-          'VictoriaER.com',
-          'Website Ads',
-          'Online Ads',
-          'Twitter',
-          'LinkedIn',
-          'Email Blast',
-          'YouTube',
-          'TV',
-          'Billboard',
-          'Radio',
-          'Brochure',
-          'Direct Mail',
-          'Citizens/DeTar',
-          'Lives/Work Nearby',
-          'Family/Friend',
-          'Urgent Care',
-          'Newspaper/Magazine',
-          'School',
-          'Hotel',
-          ],
-        datasets: [
-            {   label:'Marketing Source',
-                data: [5000,2268,4792,687,499,3893,987,190,125,7,15,22,31,729,1116,271,52,32,255,1343,3828,312,32,51,17],
-                backgroundColor: [
-                    "#42A5F5",
-                    "#66BB6A",
-                    "#FFA726",
-                    '#EC407A',
-                    '#AB47BC',
-                    '#42A5F5',
-                    '#f5425a',
-                    '#66BB6A',
-                    '#FFCA28',
-                    '#26A69A',
-                    '#aa923b',
-                    '#154c79',
-                    '#83aab9',
-                    '#02e862',
-                    '#dc3545',
-                    "#FFB74D"
-                ],
-      
-            }
-        ]
-      };
-    }
-   
-  }
 
 }

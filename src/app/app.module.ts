@@ -31,6 +31,7 @@ import { CurtomRouteReuseStrategy } from './curtom-route-reuse-strategy.service'
 import {BadgeModule} from 'primeng/badge';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -57,6 +58,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
        StoreModule.forRoot({},{metaReducers}), 
        EffectsModule.forRoot([LoginEffects]),
         environment.development ? StoreDevtoolsModule.instrument() : [],
+        FontAwesomeModule,
         // FontAwesomeModule,
         
     ],

@@ -14,7 +14,10 @@ import {CalendarModule} from 'primeng/calendar';
 import { MarketingDashboardComponent } from './marketing-dashboard/marketing-dashboard.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import {DialogModule} from 'primeng/dialog';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faFilm, faFish, fas, } from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 
@@ -56,4 +59,9 @@ const routes: Routes = [
     FontAwesomeModule
   ]
 })
-export class DashboardModule { }
+export class DashboardModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faFilm,faFish);
+
+  }
+}

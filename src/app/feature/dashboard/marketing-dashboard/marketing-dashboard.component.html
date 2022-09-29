@@ -1,5 +1,34 @@
 
-<div style="font-size: 150px;"><fa-icon [icon]="faCoffee"></fa-icon></div>
-<div style="font-size: 150px;"><fa-icon [icon]="faangular"></fa-icon></div>
+<!-- <div style="font-size: 150px;"><fa-icon [icon]="faCoffee"></fa-icon></div>
+<div style="font-size: 150px;"><fa-icon [icon]="fauser"></fa-icon></div>
+<div style="font-size: 150px;"><fa-icon [icon]="house"></fa-icon></div> -->
 
-<i class="fa-brands fa-angular"></i>
+
+<div class="card">
+
+    <!-- <h5>CO2 Reduction</h5> -->
+    <div class="p-fluid mt-1">
+
+       <div style="margin-top: 30px;">
+        <p >(tCO2)</p>
+ 
+       </div>
+       <div class="-mt-4">
+        <p-chart type="line" [data]="lineStylesData" [options]="lineOptions"></p-chart>
+        <div class="flex justify-content-center">
+    
+            <h6>(Time)</h6>
+        
+        </div>
+    </div>
+        
+    </div>
+    
+   
+</div>
+
+
+<!-- <div class="card">
+    <h5>Multi Axis</h5>
+    <p-chart type="line" [data]="multiAxisData" [options]="multiAxisOptions"></p-chart>
+</div> -->
