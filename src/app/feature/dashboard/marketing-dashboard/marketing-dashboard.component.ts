@@ -44,7 +44,7 @@ export class MarketingDashboardComponent implements OnInit {
       labels: ['2014 ', '2015 ', '2016 ', '2017 ', '2018 ', '2019 ', '2020 ', '2021 ', '2022 ', '2023 ','2024' ],
       datasets: [
         {
-          label: '(CO2) Rediction Tracking',
+          label: 'Carbon Rediction Tracking',
           data: [ 100, 90, 80, 70, 60, 50, 45,30,20,10,0],
           // data: [10, 20, 30, 40, 50, 60, 70,80,90,100],
           fill: true,
@@ -149,6 +149,33 @@ export class MarketingDashboardComponent implements OnInit {
 
   }
 
+  onPeriodChange(event)
+    {
+        
+        let currentYear=event.value;
+        
+        if(currentYear==='2018')
+        { 
+            
 
+           
+        }
+        else if(currentYear==='2019')
+        {
+            
+        }
+        else if(currentYear==='2020')
+        {
+            
+        }
+        else if(currentYear==='2021')
+        {
+            
+        }
+        else if(currentYear==='2022')
+        {
+            
+        }
+    }
 
 }
