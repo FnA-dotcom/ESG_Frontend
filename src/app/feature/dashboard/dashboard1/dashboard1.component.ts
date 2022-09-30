@@ -626,7 +626,7 @@ export class Dashboard1Component implements OnInit {
 
             this.getCard1Counter(800);
 
-            // this.card1Counter=800;
+          
             this.card2Counter=700;
             this.card3Counter=600;
             this.card4Counter=500;

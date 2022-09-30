@@ -344,8 +344,7 @@ floresvilleVisitPerMonth={
         categories: [
           "Stationary",
           "Mobile ",
-          "Fugitive",
-         
+          "Fugitive",         
           "Process emissions",
           "Electricity",
           "Steam",
@@ -363,39 +362,39 @@ floresvilleVisitPerMonth={
       }
     };
   
-  this.stackedOptions = {
-    plugins: {
-        tooltips: {
-            mode: 'index',
-            intersect: false
-        },
-        legend: {
-            labels: {
-                color: '#495057'
-            }
-        }
-    },
-    scales: {
-        x: {
-            stacked: true,
-            ticks: {
-                color: '#495057'
-            },
-            grid: {
-                color: '#ebedef'
-            }
-        },
-        y: {
-            stacked: true,
-            ticks: {
-                color: '#495057'
-            },
-            grid: {
-                color: '#ebedef'
-            }
-        }
-    }
-};
+//   this.stackedOptions = {
+//     plugins: {
+//         tooltips: {
+//             mode: 'index',
+//             intersect: false
+//         },
+//         legend: {
+//             labels: {
+//                 color: '#495057'
+//             }
+//         }
+//     },
+//     scales: {
+//         x: {
+//             stacked: true,
+//             ticks: {
+//                 color: '#495057'
+//             },
+//             grid: {
+//                 color: '#ebedef'
+//             }
+//         },
+//         y: {
+//             stacked: true,
+//             ticks: {
+//                 color: '#495057'
+//             },
+//             grid: {
+//                 color: '#ebedef'
+//             }
+//         }
+//     }
+// };
 
 this.scope1 = {
   labels: ['Scope 1', 'Scope 2', 'Scope 3'],
