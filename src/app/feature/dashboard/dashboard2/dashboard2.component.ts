@@ -25,6 +25,7 @@ export type ChartOptions = {
 export class Dashboard2Component implements OnInit {
 
   @ViewChild("chart") chart: ChartComponent;
+ 
   public chartOptions: Partial<ChartOptions>;
 
   stackedData: any;
@@ -269,6 +270,15 @@ floresvilleVisitPerMonth={
 
 
   graphDropdownOptions = ['Download SVG', 'Download PNG', 'Download CSV'];
+  card1Counter: number=400;
+  card2Counter: number=300;
+  card3Counter: number=400;
+ 
+  target1: number=500;
+  target2: number=400;
+  target3: number=400;
+  counterArray: number[];
+ 
 
   constructor() { }
 
@@ -402,17 +412,17 @@ this.scope1 = {
       {
           label: 'Actual',
           backgroundColor: '#1D352B',
-          data: [65, 59, 80]
+          data: [30,40,70]
       },
       {
           label: 'Target',
           backgroundColor: '#4C8554',
-          data: [28, 48, 40]
+          data: [20,30,40]
       }
   ]
 };
 
-
+    this.counterArray=[this.card1Counter,this.card2Counter,this.card3Counter]
     this.overviewChart = {
       labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       datasets: [
@@ -425,6 +435,7 @@ this.scope1 = {
 
 
     };
+    
 
     // this.avgCovidPt=Math.floor((74/536)*100);
 
@@ -484,5 +495,225 @@ this.scope1 = {
         localStorage.setItem('facilityName',event.value)
 
     }
+    onPeriodChange(event)
+    {
+      
+        
+        let currentYear=event.value;
+        
+        if(currentYear==='2018')
+        { 
+            
 
+            this.getCard1Counter(800);
+
+            this.card1Counter=800;
+            this.card2Counter=700;
+            this.card3Counter=600;
+           
+            this.target1=900;
+            this.target2=800;
+            this.target3=800;
+
+            this.scope1 = {
+              labels: ['Scope 1', 'Scope 2', 'Scope 3'],
+              datasets: [
+                  {
+                      label: 'Actual',
+                      backgroundColor: '#1D352B',
+                      data: [800,700,600]
+                  },
+                  {
+                      label: 'Target',
+                      backgroundColor: '#4C8554',
+                      data: [900,800,700]
+                  }
+              ]
+            };
+            this.data={
+              labels: ['Actual','Target'],
+              datasets: [
+                  {
+                      data: [2500, 2100],
+                      backgroundColor: [
+                          "rgb(33, 51, 42)",
+                          "rgb(76, 133, 84)",
+                          
+                      ],
+                    
+                  }
+              ]
+            };
+            
+            
+
+           
+        }
+        else if(currentYear==='2019')
+        {
+            this.card1Counter=700;
+            this.card2Counter=600;
+            this.card3Counter=500;
+           
+            this.target1=800;
+            this.target2=700;
+            this.target3=600;
+            this.scope1 = {
+              labels: ['Scope 1', 'Scope 2', 'Scope 3'],
+              datasets: [
+                  {
+                      label: 'Actual',
+                      backgroundColor: '#1D352B',
+                      data: [700,600,500]
+                  },
+                  {
+                      label: 'Target',
+                      backgroundColor: '#4C8554',
+                      data: [800,700,600]
+                  }
+              ]
+            };
+            this.data={
+              labels: ['Actual','Target'],
+              datasets: [
+                  {
+                      data: [2100, 1800],
+                      backgroundColor: [
+                          "rgb(33, 51, 42)",
+                          "rgb(76, 133, 84)",
+                          
+                      ],
+                    
+                  }
+              ]
+            };
+            
+            
+        }
+        else if(currentYear==='2020')
+        {
+            this.card1Counter=400;
+            this.card2Counter=300;
+            this.card3Counter=350;
+           
+            this.target1=600;
+            this.target2=400;
+            this.target3=500;
+            this.scope1 = {
+              labels: ['Scope 1', 'Scope 2', 'Scope 3'],
+              datasets: [
+                  {
+                      label: 'Actual',
+                      backgroundColor: '#1D352B',
+                      data: [400,300,350]
+                  },
+                  {
+                      label: 'Target',
+                      backgroundColor: '#4C8554',
+                      data: [600,400,500]
+                  }
+              ]
+            };
+            this.data={
+              labels: ['Actual','Target'],
+              datasets: [
+                  {
+                      data: [1500, 1050],
+                      backgroundColor: [
+                          "rgb(33, 51, 42)",
+                          "rgb(76, 133, 84)",
+                          
+                      ],
+                    
+                  }
+              ]
+            };
+        }
+        else if(currentYear==='2021')
+        {
+            this.card1Counter=700;
+            this.card2Counter=800;
+            this.card3Counter=650;
+            this.target1=800;
+            this.target2=900;
+            this.target3=900;
+            this.scope1 = {
+              labels: ['Scope 1', 'Scope 2', 'Scope 3'],
+              datasets: [
+                  {
+                      label: 'Actual',
+                      backgroundColor: '#1D352B',
+                      data: [700,800,650]
+                  },
+                  {
+                      label: 'Target',
+                      backgroundColor: '#4C8554',
+                      data: [800,900,900]
+                  }
+              ]
+            };
+            this.data={
+              labels: ['Actual','Target'],
+              datasets: [
+                  {
+                      data: [2600, 2150],
+                      backgroundColor: [
+                          "rgb(33, 51, 42)",
+                          "rgb(76, 133, 84)",
+                          
+                      ],
+                    
+                  }
+              ]
+            };
+        }
+        else if(currentYear==='2022')
+        {
+            this.card1Counter=400;
+            this.card2Counter=200;
+            this.card3Counter=300;
+            this.target1=500;
+            this.target2=400;
+            this.target3=400;
+            this.scope1 = {
+              labels: ['Scope 1', 'Scope 2', 'Scope 3'],
+              datasets: [
+                  {
+                      label: 'Actual',
+                      backgroundColor: '#1D352B',
+                      data: [400,200,300]
+                  },
+                  {
+                      label: 'Target',
+                      backgroundColor: '#4C8554',
+                      data: [500,400,400]
+                  }
+              ]
+            };
+            this.data={
+              labels: ['Actual','Target'],
+              datasets: [
+                  {
+                      data: [1300, 900],
+                      backgroundColor: [
+                          "rgb(33, 51, 42)",
+                          "rgb(76, 133, 84)",
+                          
+                      ],
+                    
+                  }
+              ]
+            };
+        }
+    }
+    getCard1Counter(count)
+    {
+        this.card1Counter=0;
+       const interval = setInterval(() => {
+          if(this.card1Counter=count-1)
+          {clearInterval(interval)}
+          this.card1Counter++;
+        }, 100);
+
+}
 }
